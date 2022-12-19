@@ -1,0 +1,30 @@
+<div class="clearfix" id="formio-component">
+    <ng-template [ngIf]="form != null">
+        <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+            <h2>Submissions for {{form.title}}</h2>
+            <div class="text-right table-control-group" >
+                <div class="btn-group" role="group">
+                    <!--                <ng-template [ngIf]="isKYCSubmission">-->
+                    <!--                    <div class="input-group" style="width: 300px;margin-right: 5px;" *ngIf="rows.length > 0">-->
+                    <!--                        <select name="externalScreening" id="externalScreening" class="form-control" (change)="screeningType = $event.target.value" style="margin-right: 5px;" >-->
+                    <!--                            &lt;!&ndash;<option value="idm" selected>Identity Mind</option>&ndash;&gt;-->
+                    <!--                            &lt;!&ndash;<option value="jumio">Jumio</option>&ndash;&gt;-->
+                    <!--                            <option value="shufti">Shufti Pro</option>-->
+                    <!--                            &lt;!&ndash;<option value="thomson">Thomson Reuters</option>&ndash;&gt;-->
+                    <!--                        </select>-->
+                    <!--                        <div class="input-group-append">-->
+                    <!--                            <button class="btn btn-secondary" type="button" (click)="screenSelected()">Screen Selected</button>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                    <!--                </ng-template>-->
+                    <!--                <button class="btn btn-secondary" (click)="downloadCsvFromLink()" *ngIf="rows.length  > 0" style="margin-right: 5px;">Export CSV</button>-->
+                    <button class="btn btn-secondary" (click)="submissionsInfoFilter()" style="margin-right: 5px;">Submissions</button>
+                    <button class="btn btn-secondary" (click)="filter()" style="margin-right: 5px;">Filter Options</button>
+                    <button class="btn btn-secondary" (click)="back()">Back</button>
+                </divl}}>
+            </div>
+        </div>
+        <div style="border:1px dotted;display: none;padding: 20px;" id='SubmissionsInfo'></div>
+    </ng-template>
+    <jhi-custom-grid [columns]="columns" [rows]="rows" (onOpenRow)="reDirectToScreening($event)"></jhi-custom-grid>
+</div>

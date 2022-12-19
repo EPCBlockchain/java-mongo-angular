@@ -1,0 +1,28 @@
+<div id="login-form">
+    <h3 id="title">Please sign in to continue</h3>
+    <form class="form" role="form" (ngSubmit)="login()" autocomplete="off">
+        <div class="form-group">
+            <input type="text" class="form-control" name="username" id="username" placeholder="Username" 
+            [(ngModel)]="username" (ngModelChange)="valUser($event)" (keyup)="valUser($event)"  (onblur)="valUser($event)"  
+            autocomplete="off"  required>
+            <div style='color: #ffffff;font-style: italic;display: none;' id='valUserInput'>You must fill the user!</div>
+        </div>
+        
+        <div class="form-group">
+            <input type="password" class="form-control" name="password" id="password" placeholder="Password" 
+            [(ngModel)]="password" (ngModelChange)="valPass($event)" (keyup)="valPass($event)"  (onblur)="valPass($event)"  
+            required>
+            <div style='color: #ffffff;font-style: italic;display: none;' id='valPassInput'>You must fill the password!</div>
+        </div>
+
+        <button type="submit" class="btn btn-signin btn-block" >Sign in</button>
+    </form>
+    <a id="forgot-password-link" (click)="requestResetPassword()">Forgot password</a>
+    <div id="registration-wrapper">
+        <a [routerLink]="['/account/register']" *ngIf="canRegister">Register</a>
+    </div>
+</div>
+
+
+
+

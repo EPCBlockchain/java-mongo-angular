@@ -1,0 +1,20 @@
+<div class="modal-header">
+    <h4 class="modal-title">Send form to customer</h4>
+    <button aria-label="Close" data-dismiss="modal" class="close" type="button" (click)="activeModal.dismiss('closed')">
+        <img src="../../../../content/images/close.png">
+    </button>
+</div>
+<div class="modal-body">
+    <div class="form-group">
+        <label for="jsonString" class="form-control-label">JSON Form</label>
+        <textarea name="jsonString" id="jsonString" class="form-control" style="height: 500px; resize:none;" [value]="jsonString" (keyup)="jsonString = $event.target.value" [autofocus]="true" autofocus></textarea>
+    </div>
+</div>
+<div class="modal-footer">
+    <div class="clearfix text-right">
+        <ng-template [ngIf]="!isExport">
+            <button class="btn btn-secondary" (click)="import()">Import</button>
+        </ng-template>
+        <button class="btn btn-secondary" (click)="activeModal.dismiss('closed')">{{ isExport ? 'Ok' : 'Cancel' }}</button>
+    </div>
+</div>

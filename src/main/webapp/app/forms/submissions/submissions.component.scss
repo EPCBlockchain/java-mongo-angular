@@ -1,0 +1,28 @@
+.panel {
+    margin:5px 15px 0px 15px;
+    padding: 15px;
+    border-radius: 5px;
+    display: block;
+    width: 100%;
+    background-color: #f6f6f6;
+    overflow: hidden;
+}
+
+
+::ng-deep .table-striped tbody tr {
+    &.APPROVED {
+        background-color: #32d03240;
+    }
+
+    &.REJECTED {
+        background-color: #d056563b;
+    }
+
+    &.FURTHER_APPROVAL {
+        background-color: #2487f126;
+    }
+
+    &.RESEND {
+        background-color: #8080805e;
+    }
+}

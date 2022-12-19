@@ -1,0 +1,97 @@
+::ng-deep .formio-form, .editting {
+
+    $mobile:479px;
+    //border:thin solid #DDD;
+
+    input[type=file]{
+        display:none;
+    }
+    .video{
+        text-align: center;
+        width:500px;
+        height:500px;
+        transform: translateX(50%);
+    }
+
+    @media screen and (max-width: $mobile){
+        border-radius: 5px;
+
+        //i.fa.fa-camera::before{
+        //    content:'';
+        //    display:none;
+        //}
+        //a.browse::after{
+        //    content:'';
+        //    display:none;
+        //}
+        //.video{
+        //    width:100%;
+        //    height:100%;
+        //    transform: translateX(0%);
+        //}
+    }
+    & > div > .card {
+        margin-bottom: 15px;
+        border: 1px solid black;
+    }
+    .input-group-addon, .input-group-prepend{
+        display:none;
+    }
+    .card {
+        // border-color: #ddd !important;
+        margin-bottom: 15px;
+    }
+
+    .panel-primary {
+        & > .panel-heading {
+            background: #0384A6;
+            color: white;
+        }
+    }
+
+    .panel-warning {
+        & > .panel-heading {
+            background: #ff9c07;
+            color: white;
+        }
+    }
+
+    .border-secondary {
+        & > .panel-heading {
+            background: #6c757d;
+            color: white;
+        }
+    }
+
+    .form-group {
+        min-height: initial;
+        padding-top:10px;
+    }
+
+    .btn[disabled] {
+        display: none;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+    .form-control[disabled='disabled'] {
+        border: none;
+        border-radius: 0;
+        background: rgb(226, 226, 226);
+        font-size: 0.85em;
+        height: 40px;
+        font-family: lato;
+    }
+
+
+    ::ng-deep .card-header.bg-primary .card-title {
+        color: white !important;
+    }
+
+}
+
+::ng-deep .formio-dialog, .formio-dialog-content, .component-settings, .formio-dialog-theme-default{
+    background:white;
+}
+

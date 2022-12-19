@@ -1,0 +1,18 @@
+<div class="clearfix" id="formio-component">
+    <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+        <h2>{{ title }}</h2>
+        <div class="text-right table-control-group" >
+            <div class="btn-group" role="group">
+                <ng-template [ngIf]="isAdmin || isOrganizationAdmin">
+                    <button class="btn btn-secondary" (click)="submissionsInfoFilter()" style="margin-right: 5px;" *ngIf="router.url === '/forms/screening'">Submissions</button>
+                    <button (click)="newForm()" class="btn btn-secondary" data-toggle="tooltip" title="Create new form">
+                        New Form
+                    </button>
+                </ng-template>                
+                <button class="btn btn-secondary" (click)="filter()" style="margin-right: 5px;" >Filter Options</button>
+            </div>
+        </div>
+    </div>
+    <div style="border:1px dotted;display: none;padding: 20px;" id='SubmissionsInfo'></div>
+    <jhi-custom-grid [columns]="columns" [rows]="rows" (onOpenRow)="openRow($event)" ></jhi-custom-grid>
+</div>

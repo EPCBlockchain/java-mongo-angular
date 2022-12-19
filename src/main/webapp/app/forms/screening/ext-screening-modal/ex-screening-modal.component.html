@@ -1,0 +1,24 @@
+<div class="modal-header">
+    <h4 class="modal-title">Send form to customer</h4>
+    <button aria-label="Close" data-dismiss="modal" class="close" type="button" (click)="activeModal.dismiss('closed')">
+        <img src="../../../../content/images/close.png">
+    </button>
+</div>
+<div class="modal-body">
+    <p>Please select your screening type.</p>
+    <div class="form-group">
+        <label for="customerEmail" class="form-control-label">Type:</label>
+        <select name="externalScreening" id="externalScreening" class="form-control" (change)="screeningType = $event.target.value">
+            <!--<option [value]="ScreeningType.IDENTITY_MIND" selected>Identity Mind</option>-->
+            <!--<option [value]="ScreeningType.JUMIO">Jumio</option>-->
+            <option [value]="ScreeningType.SHUFTI_PRO">Shufti Pro</option>
+            <!--<option [value]="ScreeningType.THOMSON_REUTERS">Thomson Reuters</option>-->
+        </select>
+    </div>
+</div>
+<div class="modal-footer">
+    <div class="clearfix text-right">
+        <button class="btn btn-secondary" (click)="selectScreeningType()">Send</button>
+        <button class="btn btn-default" (click)="activeModal.dismiss('closed')">Cancel</button>
+    </div>
+</div>

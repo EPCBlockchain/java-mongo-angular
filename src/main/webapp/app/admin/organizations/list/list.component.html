@@ -1,0 +1,106 @@
+<div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+    <h2>Organizations</h2>
+    <div class="text-right table-control-group" >
+        <div class="btn-group" role="group">
+          <button class="btn btn-secondary" type="button" (click)="redirectToCreate()">Create New Organization</button>
+          <button class="btn btn-danger" type="button" (click)="generateReportExcel()">Generate Report Excel</button>
+          <button class="btn btn-success" type="button" (click)="generatePDF()">Generate Report PDF</button>
+          <button class="btn btn-secondary" (click)="filter()" style="margin-right: 5px;" >Filter Options</button>
+        </div>
+    </div>
+</div>
+<div _ngcontent-hur-c8="" class="panel" id='filterFormData' style="display: none" >
+    <form> 
+        <div _ngcontent-hur-c8="" class="row">
+            <div _ngcontent-hur-c8="" class="col-3 form-group ng-star-inserted"> 
+                <p _ngcontent-hur-c8="">ID</p>
+                <input [(ngModel)]="idFilter" _ngcontent-hur-c8="" class="form-control ng-star-inserted" style="margin-right: 5px;" type="text" name="idFilter" id="idFilter">   
+            </div>
+            <!--
+            <div _ngcontent-hur-c8="" class="col-3 form-group ng-star-inserted"> 
+                <p _ngcontent-hur-c8="">Title</p>
+                <input _ngcontent-hur-c8="" class="form-control ng-star-inserted" style="margin-right: 5px;" type="text" id="title">
+            </div>
+            -->
+            <div _ngcontent-hur-c8="" class="col-3 form-group ng-star-inserted">
+                <p _ngcontent-hur-c8="">Organization</p>
+                <input [(ngModel)]="name1Filter" _ngcontent-hur-c8="" class="form-control ng-star-inserted" style="margin-right: 5px;" type="text" name="name1Filter" id="name1Filter">
+            </div>
+
+            <div  _ngcontent-hur-c8="" class="col-3 form-group ng-star-inserted">
+                <p _ngcontent-hur-c8="">Status</p>
+                <select [(ngModel)]="statusFilter" id="statusFilter" name="statusFilter" class="form-control form-control-sm">
+                    <option value=''>----</option>
+                    <option value="active" ng-reflect-value="active" class="ng-star-inserted">active</option>
+                    <option value="inactive" ng-reflect-value="inactive" class="ng-star-inserted">inactive</option>
+                    <option value="all" ng-reflect-value="all" class="ng-star-inserted">all</option>
+                </select>
+            </div>
+
+            <div _ngcontent-hur-c8="" class="col-3 form-group ng-star-inserted">
+                <p _ngcontent-hur-c8="">Date Created</p>
+                <input [(ngModel)]="creationDate" id="creationDate" name="creationDate" _ngcontent-hur-c8="" class="form-control ng-star-inserted" placeholder="mm/dd/yyyy" style="margin-right: 5px;" type="date" >
+            </div>
+            <!--
+            <div _ngcontent-hur-c8="" class="col-3 form-group ng-star-inserted">
+                <p _ngcontent-hur-c8="">Last Updated</p>
+                <input [(ngModel)]="lastUpdated" id="lastUpdated" name="lastUpdated" _ngcontent-hur-c8="" class="form-control ng-star-inserted" placeholder="mm/dd/yyyy" style="margin-right: 5px;" type="date" id="lastUpdated">
+            </div>
+            -->
+        </div> 
+        <button _ngcontent-hur-c8="" class="btn btn-secondary" style="margin-top:5px;" (click)="searchFilter()">Filter</button> 
+        <input type="reset" _ngcontent-hur-c8="" class="btn btn-danger" style="margin-top:5px;" value='Clear'> 
+        <button _ngcontent-hur-c8="" class="btn btn-secondary" style="margin-top:5px;" (click)="filter()">Close</button>
+        <button _ngcontent-hur-c8="" class="btn btn-secondary" style="margin-top:5px;" (click)="ngOnInit()">Show All</button>
+    </form>
+</div>
+
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">ID&nbsp;&nbsp;
+        <bi name="sort-down" style="font-size:20px;" (click)="sortIdAscending()" [hidden]="!isHiddenId"></bi>
+        <bi name="sort-up" style="font-size:20px;" (click)="sortIdDescending()" [hidden]="isHiddenId"></bi>
+      </th>
+      <th scope="col">
+        Organization name &nbsp;&nbsp;
+        <bi name="sort-down" style="font-size:20px;" (click)="sortArrayAscending()" [hidden]="!isHidden"></bi>
+        <bi name="sort-up" style="font-size:20px;" (click)="sortArrayDescending()" [hidden]="isHidden"></bi>
+      </th>
+      <th scope="col">Status&nbsp;&nbsp;
+          <div >
+            <select class="form-control form-control-sm"  (change)="selectedStatus($event)">
+              <option>----</option>
+              <option *ngFor="let s of status" [value]="s.stat">{{s.stat}}</option>
+            </select>
+          </div>
+      </th>
+      <th scope="col">Date Created&nbsp;&nbsp;
+        <bi name="sort-down"  style="font-size:20px;" (click)="sortDateDescending()" [hidden]="!isHiddenDate"></bi>
+        <bi name="sort-up"  style="font-size:20px;" (click)="sortDateAscending()" [hidden]="isHiddenDate"></bi>
+      </th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody *ngIf="orgs !== null">
+    <tr *ngFor="let org of orgs" (click)="redirectToDetail(org)">
+      <th><a [routerLink]="['../', org.id]">{{org.id}}</a></th>
+        <td>{{org.name}}</td>
+        <td>
+          <span [ngClass]="{ 'badge' : true, 'badge-success': org.status === 'active', 'badge-danger': org.status !== 'active' }">{{ org.status === 'active' ? 'Active' : 'Inactive' }}</span>
+        </td>
+        <td>{{org.creationDate}}</td>
+        <td class="justify-content-end">
+          <!--<a [routerLink]="['../',org.id]" class="btn btn-secondary">VIEW</a>-->
+          <a [routerLink]="['../',org.id]" class="btn btn-primary">EDIT</a>
+          <!-- <button (click)="deleteOrg(organization)" [routerLink]="['../',org.id]" class="btn btn-danger">DELETE</button> -->
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="orgs !== null">
+    <div class="row justify-content-center">
+        <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+    </div>
+</div>

@@ -1,0 +1,88 @@
+$mobile:479px;
+#master-header {
+    height: 45px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding-left: 50px;
+
+    @media screen and (max-width: $mobile){
+        padding-left: 0px; 
+    } 
+
+    nav {
+        height: 45px;
+        background-color:#011d26;
+
+        .header-dark{
+            background-color:#011d26;
+        }
+        a {
+            padding: 0;
+            color: #fff;
+            font-size: 0.9em;
+
+            &:hover {
+                #brand-logo {
+                    transform: rotateY(180deg);
+                }
+            }
+
+            #brand-logo {
+                width: 30px;
+                height: 30px;
+                margin-right: 5px;
+                transition: all 0.5s ease;
+                background-image: url('../../../content/img/Proximax-Shield-Logo1-rgb.png');
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+        }
+
+        .dropdown-toggle {
+            &:after {
+                display: none;
+            }
+
+            & + .dropdown-menu {
+                margin-top: 20px;
+                border: 0px;
+                background: #343A40;
+
+                &:after {
+                    content: '';
+                    display: block;
+                    background-color: #343A40;
+                    position: absolute;
+                    height: 15px;
+                    width: 15px;
+                    top: -9.5px;
+                    right: 15px;
+                    transform: rotateZ(45deg);
+                    z-index: -1;
+                    border-bottom: 0;
+                    border-right: 0;
+                }
+
+                .dropdown-item {
+                    font-size: 0.9em;
+                    font-weight: bold;
+                    font-family: Lato;
+                    color: #fff;
+                    outline: none;
+                    cursor: pointer;
+                    padding: 6px 15px;
+                    background-color: #343A40;
+                    &:hover{
+                        background-color: #0399A8;
+                    }
+                    &:active {
+                        background-color: #010101;
+                    }
+                }
+            }
+        }
+    }
+}

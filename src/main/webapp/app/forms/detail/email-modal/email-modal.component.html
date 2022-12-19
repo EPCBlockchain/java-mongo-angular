@@ -1,0 +1,19 @@
+<div class="modal-header">
+    <h4 class="modal-title">Send form to customer</h4>
+    <button aria-label="Close" data-dismiss="modal" class="close" type="button" (click)="activeModal.dismiss('closed')">
+        <img src="../../../../content/images/close.png">
+    </button>
+</div>
+<div class="modal-body">
+    <p>Please, specify customer email.</p>
+    <div class="form-group">
+        <label for="customerEmail" class="form-control-label">Customer Email</label>
+        <input type="email" class="form-control" (keyup.enter)="sendToCustomer()" (change)="customerEmail = $event.target.value" [autofocus]="true" autofocus id="customerEmail"/>
+    </div>
+</div>
+<div class="modal-footer">
+    <div class="clearfix text-right">
+        <button class="btn btn-secondary" (click)="sendToCustomer()">Send</button>
+        <button class="btn btn-default" (click)="activeModal.dismiss('closed')">Cancel</button>
+    </div>
+</div>

@@ -1,0 +1,92 @@
+<div class="clearfix" id="formio-component">
+    <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+        <h2>{{ title }}</h2>
+        <div class="text-right table-control-group" >
+            <div class="btn-group" role="group">
+                
+            </div>
+        </div>
+    </div>
+    <div style="border:1px dotted;display: none;padding: 20px;" id='SubmissionsInfo'></div>
+    <jhi-custom-grid [columns]="columns" [rows]="rows" (onOpenRow)="openRow($event)" style="display: none;" id='SubmissionsInfo'></jhi-custom-grid>
+
+    <div style="height: 30px;" ></div>
+
+    <!-- Start top graphics -->
+    <div class="row" style="background-color: #ffffff;" >
+           <table border='0' >
+            <tr>
+                <!--
+                <td><div style='width: 25px; height: 25px;background-color: #78B6E4;'></div></td>
+                <td>&nbsp; Returned to Customer</td>
+                <td><div style='' id='totalReturnedCustomer'>_</div></td>
+                -->
+
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+                <td><div style='width: 25px; height: 25px;background-color: #F4A900;'></div></td>
+                <td>&nbsp; Pending Approval</td>
+                <td><div style='' id='totalPendingApproval'>_</div></td>
+
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+                <td><div style='width: 25px; height: 25px;background-color: #F16521;'></div></td>
+                <td>&nbsp; Escalated</td>
+                <td><div style='' id='totalEscalated'>_</div></td>
+
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+                <td><div style='width: 25px; height: 25px;background-color: #20B5AC;'></div></td>
+                <td>&nbsp; Approved</td>
+                <td><div style='' id='totalApproved'>_</div></td>
+
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+                <td><div style='width: 25px; height: 25px;background-color: #b0b0b0;'></div></td>
+                <td>&nbsp; Rejected</td>
+                <td><div style='' id='totalRejected'>_</div></td>
+
+                <!--
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td><div style='width: 25px; height: 25px;background-color: #00580a;'></div></td>
+                <td>&nbsp; Submitted</td>
+                <td><div style='' id='totalSubmitted'>_</div></td>
+
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+                <td><div style='width: 25px; height: 25px;background-color: #DDD3B9;'></div></td>
+                <td>&nbsp; Draft</td>
+                <td><div style='' id='totalDraft'>_</div></td>
+
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+                <td><div style='width: 25px; height: 25px;background-color: #d8a016;'></div></td>
+                <td>&nbsp; Return to Customer</td>
+                <td><div style='' id='totalResend'>_</div></td>
+                 -->
+           </table>
+            
+           
+           
+           <br><br>
+           <div style="height: 30px;" ></div>        
+           <div style="height: 30px;" ></div>
+           <div style="height: 30px;" ></div>
+           
+           <div style="width: 100%;">
+               <div id="chartContainer" style="height: 370px; width: 50%;float: left;"></div>
+               <div id="chartContainer2" style="height: 370px; width: 50%;float: left;"></div>
+           </div>
+           <div style="height: 30px;" ></div>
+           <div id="chartContainer3" style="height: 370px; width: 100%;float: left;"></div>
+           
+
+           
+           
+           <div style="height: 100px;" ></div>
+          <!--
+          <img src="../../../content/images/graphics-01.png" style='display: block;margin-left: auto;margin-right: auto;' />
+          -->
+
+    </div>
+</div>

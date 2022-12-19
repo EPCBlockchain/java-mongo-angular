@@ -1,0 +1,17 @@
+<div id="external-form-wrapper">
+    <div id="external-form-container" class="container">
+        <ng-template [ngIf]="isReady">
+            <formio [form]="form"
+                    [service]="externalService"
+                    (submit)="onSubmit($event)"
+                    [viewOnly]="isReadOnly"
+                    [refresh]="refresh"
+                    [submission]="submission"
+            >
+            </formio>
+        </ng-template>
+        <ng-template [ngIf]="errorMessage">
+            {{ this.errorMessage }}
+        </ng-template>
+    </div>
+</div>

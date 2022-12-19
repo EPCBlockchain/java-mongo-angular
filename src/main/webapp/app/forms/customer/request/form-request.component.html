@@ -1,0 +1,7 @@
+<div class="clearfix" id="formio-component">
+   <ng-template [ngIf]="form != null">
+      <h1>{{ form.title }}</h1>
+      <br>
+      <formio [form]="form" (change)="onChange($event)" [service]="service" [submission]="data" (submit)="onSubmit($event)" (beforeSubmit)="beforeSubmit($event)"></formio>
+   </ng-template>
+</div>

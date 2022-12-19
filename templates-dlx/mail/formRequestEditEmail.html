@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title >Form Request</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="shortcut icon" th:href="@{|${baseUrl}/favicon.ico|}" />
+    </head>
+    <body>
+        <p >
+            We have checked your submission and noticed that some of your provided information is incorrect. 
+            Please read the note below and fill out the registration form again:
+            <p th:text="@{|${note}|}"></p>
+            Follow this URL to update your ProximaX KYC account information:
+        </p>
+        <p>
+            <a th:href="@{|${baseUrl}/#/forms/detail/${submissionId}|}"
+               th:text="@{|${baseUrl}/#/forms/detail/${submissionId}|}">click here</a>
+            
+        </p>
+        <p>
+            <span>Regards, </span>
+            <br/>
+            <em th:text="#{email.signature}">ProximaX KYC Team.</em>
+        </p>
+    </body>
+</html>

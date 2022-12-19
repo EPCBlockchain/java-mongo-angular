@@ -1,0 +1,12 @@
+
+<ng-template #resultTemplate let-r="result" let-t="term">
+    <ngb-highlight [result]="r.label" [term]="t"></ngb-highlight>
+</ng-template>
+
+<label class="control-label">{{ label }}</label>
+<input id="typeahead-template" type="text" class="form-control"
+       [resultTemplate]="resultTemplate"
+       (selectItem)="selectItem($event)"
+       [ngbTypeahead]="search"
+       [value]="selectedLabel"
+       [inputFormatter]="formatter" />

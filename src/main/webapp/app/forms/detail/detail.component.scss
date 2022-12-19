@@ -1,0 +1,150 @@
+.badge{
+    background-color:#2097B2;
+    color:#fff;
+    border-radius: 3px;
+    border:none;
+    padding:5px;
+}
+.formio-dialog, .formio-dialog-content, .component-settings, .formio-dialog-theme-default{
+    background:white;
+}
+::ng-deep form-builder {
+    .formcomponents {
+        .form-builder-panel {
+            .form-builder-group-header {
+                background: #838994;
+
+                .builder-group-button {
+                    border: 0;
+                    outline: none;
+                    box-shadow: none;
+                    font-family: Montserrat;
+                    font-weight: 100;
+                    margin-bottom: 0;
+                }
+
+                & + .panel-collapse {
+                    .panel-body {
+                        .btn {
+                            margin-left: 0;
+                            border-radius: 0 !important;
+                            line-height: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+::ng-deep #build-holder {
+    margin-bottom: 15px;
+    padding: 10px 10px;
+    border-radius:5px;
+    background: #ffffff;
+    
+    
+
+    &:not(.editting) {
+        background: #f5f5f5;
+        pointer-events: none;
+
+        .component-btn-group {
+            display: none;
+            margin-top: 10%;
+            padding: 10%;
+        }
+
+        .formcomponents {
+            display: none;
+        }
+
+        .formarea{
+            flex: 0 0 100%;
+            max-width:100%;
+        }
+
+        .formarea.drag-container {
+            width: 100%;
+            min-width: 100%;
+        }
+        .form-control{
+            background: #ececec;
+        }
+    }
+
+    .component-settings-button {
+        box-shadow: none;
+        min-width: initial !important;
+        border: 1px solid #ddd;
+        background-position: center;
+        background-size: 15px;
+        background-repeat: no-repeat;
+
+        &:hover {
+            background-color: #c5c5c5;
+        }
+    }
+
+    & > div > .card {
+        margin-bottom: 15px;
+    }
+
+    .card {
+        // border-color: #ddd !important;
+        margin-bottom: 15px;
+    }
+
+    .panel-primary {
+        & > .panel-heading {
+            background: #3e8acc;
+            color: white;
+        }
+    }
+
+    .panel-warning {
+        & > .panel-heading {
+            background: #ffc107;
+            color: white;
+        }
+    }
+
+    .border-secondary {
+        & > .panel-heading {
+            background: #6c757d;
+            color: white;
+        }
+    }
+
+    .form-group {
+        min-height: initial;
+        padding-top:10px;
+    }
+
+    .btn[disabled] {
+        display: none;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    .form-control[disabled='disabled'] {
+        background: #eee;
+    }
+}
+.formio-dialog, .formio-dialog-content, .component-settings, .formio-dialog-theme-default{
+    background:white;
+}
+.linkdiv{
+    padding:0.5em;
+    background:#f0f0f0;
+}
+.get-form{
+    min-width: 100%;
+
+    .link-select{
+        background: white;
+        border-radius:5%;margin-bottom: 0.3em;
+    }
+}

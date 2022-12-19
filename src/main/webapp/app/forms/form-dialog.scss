@@ -1,0 +1,60 @@
+::ng-deep .formio-dialog.formio-dialog-theme-default.component-settings {
+    background:rgba(0, 0, 0, 0.3);
+
+    .formio-dialog-close {
+
+        &::before {
+            content: 'x' !important;
+        }
+
+        &:focus {
+            outline: none !important;
+            box-shadow: none !important;
+        }
+    }
+    .formio-dialog-content{
+        background:white;
+        font-family: lato;
+
+            p{
+                color:#5e5e5e;
+                font-size:1.2rem;
+                font-weight: normal;
+            }
+            .nav-tabs{
+                margin-block-start: 0;
+                margin-block-end: 1em;
+                padding-inline-start: 0;
+                margin-bottom: 0;
+                .nav-link{
+                    border:none;
+                    background:#5eb1c3;
+                }
+                .nav-link.active{
+                    background:#838994;
+                    padding-top:8px;
+                    color:white;
+                }
+            }
+            .preview-panel{
+                margin-top:2.5em;
+            }
+            .card-header{
+                background: #8c8e92;
+                color:white;
+
+                h4{
+                    font-size:1rem;
+                }
+            }
+        
+        
+        
+
+        
+
+        .pull-right a{
+            display: none;
+        }
+    }
+}

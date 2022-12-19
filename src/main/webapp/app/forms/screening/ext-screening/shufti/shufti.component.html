@@ -1,0 +1,49 @@
+<div class="clearfix">
+    <h1 class="justify-content-between">Screening results</h1>
+    <ng-template [ngIf]="inputResult">
+        <div class="row">
+            <div class="col-12">
+                <b class="screening-label font-weight-bold">Status :</b>
+                <span class="font-italic">{{ inputResult.event }}</span>
+            </div>
+            <ng-template [ngIf]="inputResult.declined_reason">
+                <div class="col-12">
+                    <b class="screening-label font-weight-bold">Reason :</b>
+                    <span class="font-italic">{{ inputResult.declined_reason }}</span>
+                </div>
+            </ng-template>
+            <ng-template [ngIf]="inputResult.reference">
+                <div class="col-12">
+                    <b class="screening-label font-weight-bold">Reference Id :</b>
+                    <span class="font-italic">{{ inputResult.reference }}</span>
+                </div>
+            </ng-template>
+
+            <ng-template [ngIf]="inputResult.verification_result && inputResult.verification_result.background_checks">
+                <div class="col-12">
+                    <b class="screening-label font-weight-bold">Background Checks :</b>
+                    <span class="font-italic">{{ inputResult.verification_result.background_checks }}</span>
+                </div>
+            </ng-template>
+            <ng-template [ngIf]="inputResult.verification_result">
+                <div class="col-12">
+                    <b class="screening-label font-weight-bold">Face Verification :</b>
+                    <span class="font-italic">{{ inputResult.verification_result.face }}</span>
+                </div>
+            </ng-template>
+            <ng-template [ngIf]="inputResult.verification_result">
+                <div class="col-12">
+                    <b class="screening-label font-weight-bold">ID Verification :</b>
+                    <span class="font-italic">{{ inputResult.verification_result.id.name }}</span>
+                </div>
+            </ng-template>
+            <ng-template [ngIf]="inputResult.verification_result && inputResult.verification_result.address">
+                <div class="col-12">
+                    <b class="screening-label font-weight-bold">Address Verification :</b>
+                    <span class="font-italic">{{ inputResult.verification_result.address.name }}</span>
+                </div>
+            </ng-template>
+        </div>
+    </ng-template>
+</div>
+

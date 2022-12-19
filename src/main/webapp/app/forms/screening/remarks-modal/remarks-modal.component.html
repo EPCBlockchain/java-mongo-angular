@@ -1,0 +1,19 @@
+<div class="modal-header">
+    <h4 class="modal-title">Review Note</h4>
+    <button aria-label="Close" data-dismiss="modal" class="close" type="button" (click)="activeModal.dismiss('closed')">
+        <img src="../../../../content/images/close.png">
+    </button>
+</div>
+<div class="modal-body">
+    <p>Please write a note to senior management<!--Please, write a note for the customer.--></p>
+    <div class="form-group">
+        <label for="rejectionNote" class="form-control-label">Note:</label>
+        <textarea id="rejectionNote" (keyup)="onKeyUp($event)" maxlength="500" class="form-control" autofocus></textarea>
+    </div>
+</div>
+<div class="modal-footer">
+    <div class="clearfix text-right">
+        <button class="btn btn-secondary" (click)="addRemarks()">Submit</button>
+        <button class="btn btn-default" (click)="activeModal.dismiss('closed')">Cancel</button>
+    </div>
+</div>

@@ -1,0 +1,71 @@
+<ng-template  [ngIf]="data">
+      <div class="clearfix">
+            <h1 class="justify-content-between">Screening results for contributor</h1>
+          <div class="row">
+              <div class="col-12">
+                  <span class="screening-label">Name :</span>
+                  {{ data.result.name }}
+              </div>
+              <div class="col-12">
+                  <span class="screening-label">Result Code :</span>
+                  {{ data.result.resultCode }}
+              </div>
+              <div class="col-12">
+                  <span class="screening-label">Description :</span>
+                  {{ data.result.description }}
+              </div>
+              <div class="col-12">
+                  <span class="screening-label">Details :</span>
+                  <span *ngFor="let result of data.result.details">{{ result.value }}</span>
+              </div>
+          </div>
+          <ng-template *ngIf="data.idResults.length">
+              <table class="table">
+                  <thead style="color: #000000;background: #e9ecef;">
+                  <tr>
+                      <th colspan="5">
+                          <h5>Screening</h5>
+                      </th>
+                  </tr>
+                  <tr>
+                      <th scope="col">Name</th>
+                      <th scope="col">Result Code</th>
+                      <th scope="col">Description</th>
+                      <th scope="col">Details</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let item of data.idResults">
+                      <th scope="row" *ngIf="item.ruleId ==2320 ||item.ruleId ==1110 ||item.ruleId ==1190 ||item.ruleId == 30065">{{item.name}}</th>
+                      <td *ngIf="item.ruleId ==2320 ||item.ruleId ==1110 ||item.ruleId ==1190 ||item.ruleId == 30065">{{item.resultCode}}</td>
+                      <td *ngIf="item.ruleId ==2320 ||item.ruleId ==1110 ||item.ruleId ==1190 ||item.ruleId == 30065">{{item.description}}</td>
+                      <td *ngIf="item.ruleId ==2320 ||item.ruleId ==1110 ||item.ruleId ==1190 ||item.ruleId == 30065">{{item.details}}</td>
+                  </tr>
+                  </tbody>
+              </table>
+              <table class="table">
+                  <thead style="color: #000000;background: #e9ecef;">
+                  <tr>
+                      <th colspan="5">
+                          <h5>Id Check/Verify</h5>
+                      </th>
+                  </tr>
+                  <tr>
+                      <th scope="col">Name</th>
+                      <th scope="col">Result Code</th>
+                      <th scope="col">Description</th>
+                      <th scope="col">Details</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let item of data.idResults">
+                      <th scope="row" *ngIf="item.ruleId == 30060">{{item.name}}</th>
+                      <td *ngIf="item.ruleId == 30060">{{item.resultCode}}</td>
+                      <td *ngIf="item.ruleId == 30060">{{item.description}}</td>
+                      <td *ngIf="item.ruleId == 30060">{{item.details}}</td>
+                  </tr>
+                  </tbody>
+              </table>
+          </ng-template>
+      </div>
+</ng-template>

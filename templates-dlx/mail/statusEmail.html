@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title >Form Request</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="shortcut icon" th:href="@{|${baseUrl}/favicon.ico|}" />
+    </head>
+    <body>
+        <p>
+            Status template  message goes here
+        </p>
+        <p>
+            <a th:href="@{|${baseUrl}/#/forms/screening/${screeningSubmissionId}|}">click here</a>
+        </p>
+        <p>
+            <span>Regards, </span>
+            <br/>
+            <em>ProximaX KYC Team.</em>
+        </p>
+    </body>
+</html>

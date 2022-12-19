@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="shortcut icon" th:href="@{|${baseUrl}/favicon.ico|}" />
+</head>
+<body>
+<div align="left">
+
+    <img src='https://www.proximax.io/user/themes/proximaxvrs1/images/logo.png' style='height: 50px;' >
+    <br><br>  
+
+
+    <p th:text="@{|Dear ${user.login},|}"></p>
+    <p>
+        Your ProximaX KYC account have been created, please click on the URL below to activate it:
+    </p>
+
+    <p>
+        <a th:href="http://localhost:9000/#/account/activate?key=${user.activationKey}&redirect=http://localhost:9000/#/forms/request/5d4be2df4b41500001dbb2ab/5d54f42b667c7f000101fa0a|}">Activation Link</a>
+        <!--
+        <a th:href="@{|${baseUrl}/#/account/activate?key=${user.activationKey}&redirect=${baseUrl}/#/forms/request/5d4be2df4b41500001dbb2ab/5d54f42b667c7f000101fa0a|}">Activation Link</a>
+        -->
+    </p>
+    <p>
+        <span>Regards, </span>
+        <br />
+        <em>ProximaX KYC Team.</em>
+    </p>
+</div>
+</body>
+</html>

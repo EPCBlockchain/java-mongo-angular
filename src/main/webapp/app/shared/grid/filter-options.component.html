@@ -1,0 +1,56 @@
+<!--<button class="btn btn-secondary" (click)='showAccordion()'>Filter Options</button>-->
+<div class="row justify-content-end" *ngIf="isFiltering">
+    <!--FILTER ACCORDION-->
+    <div class="panel">
+        <div class="row">
+            <div class="col-3 form-group" *ngFor="let filter of filters">
+                <p>{{ filter.label }}</p>
+                <ng-container *ngSwitch="filter.key"> </ng-container>
+                <input
+                    type="text"
+                    *ngIf="
+                        filter.key != 'creationDate' && filter.key != 'lastUpdate' && filter.key != 'lastUpdated' && filter.key != 'status'
+                    "
+                    class="form-control"
+                    [value]="filter.value"
+                    [id]="filter.key"
+                    (change)="onChange(filter, $event.target.value)"
+                    style="margin-right: 5px;"
+                    (keyup)="onEnter($event)"
+                />
+                <input
+                    *ngIf="filter.key === 'creationDate' || filter.key === 'lastUpdate' || filter.key === 'lastUpdated'"
+                    type="date"
+                    class="form-control"
+                    [value]="filter.value"
+                    placeholder="mm/dd/yyyy"
+                    [id]="filter.key"
+                    (change)="onChange(filter, $event.target.value)"
+                    style="margin-right: 5px;"
+                    (keyup)="onEnter($event)"
+                />
+                <select
+                    *ngIf="filter.key === 'status'"
+                    class="form-control"
+                    [id]="filter.key"
+                    [value]="filter.value"
+                    (change)="onChange(filter, $event.target.value)"
+                    style="margin-right: 5px;"
+                >
+                    <option value="" disabled> Select Status</option>
+                    <option value="RESEND">Returned to Customer</option>
+                    <option value="APPROVED">Approved</option>
+                    <option value="PENDING_APPROVAL">Pending Approval</option>
+                    <option value="REJECTED">Rejected</option>
+                    <option value="DRAFT">Draft</option>
+                    <option value="SUBMITTED">Submitted</option>
+                    <option value="FURTHER_APPROVAL">Further Approval</option>
+                    <option value="SCREENED">Screened</option>
+                </select>
+            </div>
+        </div>
+        <button class="btn btn-secondary" (click)="filterSubmissions()" style="margin-top:5px;">Filter</button>
+        <button class="btn btn-danger" (click)="clearFilters()" style="margin-top:5px;">Clear</button>
+        <button class="btn btn-default"  style="margin-top:5px;">Generate Report</button>
+    </div>
+</div>

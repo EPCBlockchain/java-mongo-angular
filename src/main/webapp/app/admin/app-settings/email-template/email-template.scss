@@ -1,0 +1,25 @@
+@import '/node_modules/quill/dist/quill.core.css';
+@import '/node_modules/quill/dist/quill.bubble.css';
+@import '/node_modules/quill/dist/quill.snow.css';
+
+.template-defaults {
+    span.input-group-text {
+        border: 0;
+        font-size: 0.8em;
+        font-family: lato;
+    }
+
+    .form-control {
+        font-size: 0.8em;
+    }
+
+    .btn.btn-secondary {
+        margin: 0;
+        height: 100%;
+        border-radius: 0 !important;
+    }
+}
+
+.quill-editor {
+    min-height: 500px;
+}

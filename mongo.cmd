@@ -1,0 +1,1 @@
+mongod.exe --storageEngine=mmapv1 --journal

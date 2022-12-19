@@ -1,0 +1,186 @@
+<div id='modal' style='display: none;justify-content: center;align-items: center;height: 250px;width: 50%;background-color: #ffffff'>
+    <div class="modal-header">
+        <h1 class="modal-title">Warning</h1>
+        <button aria-label="Close" data-dismiss="modal" class="close" type="button" (click)="cancelModal()">
+            <img src='../../../content/images/close.png'>
+        </button>
+    </div>
+    <div class="modal-body">
+        <h4>Warning! <br>
+            Tipping-off is a criminal offence. <br>
+            Do you want to proceed ?
+        </h4><br>
+        <button class="btn btn-secondary" (click)="activeApplicationSettingsREJECTION_EMAIL()">I wish to proceed</button>
+        <!-- <button class="btn btn-default"   (click)="cancelModal()">Cancel</button> -->
+    </div>
+</div>
+
+<div id='modalNewActive' style='display: none;justify-content: center;align-items: center;height: 260px;width: 50%;background-color: #ffffff'>
+    <div class="modal-header">
+        <h1 class="modal-title">Warning!</h1>
+        <button aria-label="Close" data-dismiss="modal" class="close" type="button" (click)="cancelModalNew()">
+            <img src='../../../content/images/close.png'>
+        </button>
+    </div>
+    <div class="modal-body">
+        <h4>Warning! <br><br></h4>
+        <h5>
+            You are about to <b>deactivate</b> this automated email submission<br>
+            Do you wish to proceed ?
+        </h5><br>
+        <table>
+            <tr>
+                <td><button class="btn btn-default"   (click)="cancelModalNew()">Cancel</button></td>
+                <td>&nbsp;&nbsp;</td>
+                <td>
+                    <button style='display: none' id='proceed_CREATION_EMAIL' class="btn btn-secondary" (click)="activeApplicationSettingsNew('CREATION_EMAIL', 0)">Proceed</button>
+                    <button style='display: none' id='proceed_ACTIVATION_EMAIL_SUCCESS' class="btn btn-secondary" (click)="activeApplicationSettingsNew('ACTIVATION_EMAIL_SUCCESS', 0)">Proceed</button>
+                    <button style='display: none' id='proceed_SUBMISSION_RECEIVED_EMAIL' class="btn btn-secondary" (click)="activeApplicationSettingsNew('SUBMISSION_RECEIVED_EMAIL', 0)">Proceed</button>
+                    <button style='display: none' id='proceed_APPROVAL_EMAIL' class="btn btn-secondary" (click)="activeApplicationSettingsNew('APPROVAL_EMAIL', 0)">Proceed</button>
+                    <button style='display: none' id='proceed_REJECTION_EMAIL' class="btn btn-secondary" (click)="activeApplicationSettingsNew('REJECTION_EMAIL', 0)">Proceed</button>
+                    <button style='display: none' id='proceed_ACTIVATION_EMAIL' class="btn btn-secondary" (click)="activeApplicationSettingsNew('ACTIVATION_EMAIL', 0)">Proceed</button>
+                    <button style='display: none' id='proceed_PASSWORD_RESET_EMAIL' class="btn btn-secondary" (click)="activeApplicationSettingsNew('PASSWORD_RESET_EMAIL', 0)">Proceed</button>
+                    <button style='display: none' id='proceed_FORM_REQUEST_EMAIL' class="btn btn-secondary" (click)="activeApplicationSettingsNew('FORM_REQUEST_EMAIL', 0)">Proceed</button>
+                    <button style='display: none' id='proceed_FORM_REQUEST_EMAIL_EDIT' class="btn btn-secondary" (click)="activeApplicationSettingsNew('FORM_REQUEST_EMAIL_EDIT', 0)">Proceed</button>
+                    <button style='display: none' id='proceed_STATUS_EMAIL' class="btn btn-secondary" (click)="activeApplicationSettingsNew('STATUS_EMAIL', 0)">Proceed</button>
+                </td>
+            <tr>
+        </table>            
+    </div>
+</div>
+  
+<div id='modalNewActive2' style='display: none;justify-content: center;align-items: center;height: 260px;width: 50%;background-color: #ffffff'>
+    <div class="modal-header">
+        <h1 class="modal-title">Warning!</h1>
+        <button aria-label="Close" data-dismiss="modal" class="close" type="button" (click)="cancelModalNew()">
+            <img src='../../../content/images/close.png'>
+        </button>
+    </div>
+    <div class="modal-body">
+        <h4>Warning! <br><br></h4>
+        <h5>
+            You are about to <b>activate</b> this automated email submission<br>
+            Do you wish to proceed ?
+        </h5><br>
+
+        <table>
+            <tr>
+                <td><button class="btn btn-default"   (click)="cancelModalNew()">Cancel</button></td>
+                <td>&nbsp;&nbsp;</td>
+                <td>
+                    <button style='display: none' id='proceedI_CREATION_EMAIL' class="btn btn-secondary" (click)="activeApplicationSettingsNew('CREATION_EMAIL', 1)">Proceed</button>
+                    <button style='display: none' id='proceedI_ACTIVATION_EMAIL_SUCCESS' class="btn btn-secondary" (click)="activeApplicationSettingsNew('ACTIVATION_EMAIL_SUCCESS', 1)">Proceed</button>
+                    <button style='display: none' id='proceedI_SUBMISSION_RECEIVED_EMAIL' class="btn btn-secondary" (click)="activeApplicationSettingsNew('SUBMISSION_RECEIVED_EMAIL', 1)">Proceed</button>
+                    <button style='display: none' id='proceedI_APPROVAL_EMAIL' class="btn btn-secondary" (click)="activeApplicationSettingsNew('APPROVAL_EMAIL', 1)">Proceed</button>
+                    <button style='display: none' id='proceedI_REJECTION_EMAIL' class="btn btn-secondary" (click)="activeApplicationSettingsNew('REJECTION_EMAIL', 1)">Proceed</button>
+                    <button style='display: none' id='proceedI_ACTIVATION_EMAIL' class="btn btn-secondary" (click)="activeApplicationSettingsNew('ACTIVATION_EMAIL', 1)">Proceed</button>
+                    <button style='display: none' id='proceedI_PASSWORD_RESET_EMAIL' class="btn btn-secondary" (click)="activeApplicationSettingsNew('PASSWORD_RESET_EMAIL', 1)">Proceed</button>
+                    <button style='display: none' id='proceedI_FORM_REQUEST_EMAIL' class="btn btn-secondary" (click)="activeApplicationSettingsNew('FORM_REQUEST_EMAIL', 1)">Proceed</button>
+                    <button style='display: none' id='proceedI_FORM_REQUEST_EMAIL_EDIT' class="btn btn-secondary" (click)="activeApplicationSettingsNew('FORM_REQUEST_EMAIL_EDIT', 1)">Proceed</button>
+                    <button style='display: none' id='proceedI_STATUS_EMAIL' class="btn btn-secondary" (click)="activeApplicationSettingsNew('STATUS_EMAIL', 1)">Proceed</button>
+                </td>
+            <tr>
+        </table>        
+        
+    </div>
+</div>
+
+<div id='div1' class="container-fluid">
+    <!-- <h2 style='font-weight: normal;' ><a onclick='buttonsActiveslocalLabels()'>Application Settings</a></h2> -->
+    <h2 style='font-weight: normal;' >Application Settings</h2>
+    <hr />
+    <h3>Email Settings</h3>
+    <br />
+    <div class="row">
+        <div class="col-6" *ngFor="let templateObject of templates">
+            <ng-container [ngTemplateOutlet]="mailTemplate" [ngTemplateOutletContext]="templateObject"></ng-container>
+        </div>
+    </div>
+    <br />
+    <hr />
+    <h4>Form Settings</h4>
+    <br />
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <dt>
+                <span>Validation Url</span>
+            </dt>
+            <input type="text" class="form-control" name="allowedHosts" [(ngModel)]="appSettings.securitySettings.validationUrl" />
+        </div>
+        <div class="col-md-6 mb-3">
+            <dt>
+                <span>PostBack URL</span>
+            </dt>
+            <input type="text" class="form-control" name="allowedHosts" [(ngModel)]="appSettings.securitySettings.postBackUrl" />
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="container-fluid text-right">
+            <button class="btn btn-secondary" (click)="updateSecuritySettings()">Update Form Settings</button>
+        </div>
+    </div>
+</div>
+
+<ng-template #mailTemplate let-template="template" let-label="label" let-type="type">
+    <div id='div2' class="form-group">
+        <label for="activationEmail" class="control-label">{{ label }}</label>
+        <div class="input-group mb-3">
+            <input
+                name="activationEmail"
+                type="text"
+                class="form-control"
+                readonly
+                [(value)]="template.subject"
+                placeholder="Template not set"
+                aria-label="Recipient's username"
+                aria-describedby="button-addon2"
+                style='height: 80%'
+            />
+            <!-- <div class="input-group-append"> -->
+            <div *ngFor="let data of dataApplicationGeneral; let i = index" style='height: 120%'>
+                        <div *ngIf="dataApplicationGeneral[i]['type'] == type && dataApplicationGeneral[i]['active'] == 'true'" >                                    
+                                    <button
+                                        class="btn btn-secondary"
+                                        type="button"
+                                        (click)="activeApplicationSettings(template, type)"
+                                        style="border-radius: 0 !important;margin: 0;height: 200%;background-color:green;color:#ffffff;"
+                                        id="{{type}}"
+                                    >
+                                    Active
+                                    </button>
+                                    <button
+                                        id="button-{{type}}"
+                                        class="btn btn-secondary"
+                                        type="button"
+                                        (click)="updateTemplate(template, type)"
+                                        style="border-radius: 0 !important;margin: 0;height: 200%;"
+                                    >
+                                        {{ template.subject ? 'Update' : 'Create' }}
+                                    </button>
+                        </div>
+                        <div *ngIf="dataApplicationGeneral[i]['type'] == type && dataApplicationGeneral[i]['active'] == 'false'" >
+                                    <button
+                                        class="btn btn-default"
+                                        type="button"
+                                        (click)="activeApplicationSettings(template, type)"
+                                        style="border-radius: 0 !important;margin: 0;height: 200%;background-color:#dcdbdb;color:#4b4a4a;"
+                                        id="{{type}}"
+                                    >
+                                    Inactive
+                                    </button>
+                                    <button
+                                        id="button-{{type}}"
+                                        class="btn btn-secondary"
+                                        type="button"
+                                        (click)="updateTemplate(template, type)"
+                                        style="border-radius: 0 !important;margin: 0;height: 200%;"
+                                    >
+                                        {{ template.subject ? 'Update' : 'Create' }}
+                                    </button>
+                        </div>
+            </div>
+            <!-- </div>  -->
+        </div>
+    </div>
+</ng-template>

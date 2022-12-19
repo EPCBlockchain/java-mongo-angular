@@ -1,0 +1,45 @@
+$mobile:479px;
+@media screen and (max-height: $mobile){
+    div#registration-form {
+        height:100%;
+        flex-wrap: nowrap;
+        overflow-y: scroll;   
+        padding-bottom:120px;   
+        #title {
+            margin-bottom: 10px;
+        }
+    }
+} 
+
+@media screen and (max-width: $mobile) and (min-width:320px){
+    div#registration-form {
+        height:100%;
+        flex-wrap: nowrap;
+        overflow-y: scroll; 
+        padding-bottom:120px;     
+        #title {
+            margin-bottom: 10px;
+        }
+    }
+}
+
+#registration-form {
+    width: 100%;
+    margin-bottom: 20px;
+
+    span#registration-success {
+        text-align: center;
+        display: block;
+        color: #20b5ac;
+        font-weight: 700;
+    }
+    .form-control-label{
+        color:white;
+    }
+    .strength{
+        color:white;
+        &:active {
+            color:white;
+        }
+    }
+}

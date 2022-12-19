@@ -1,0 +1,14 @@
+<div class="clearfix">
+    <div class="application-success text-center" *ngIf="success">
+        Your user account has been activated and a new email has been sent to you for additional instructions.
+    </div>
+
+    <div class="application-error text-center" *ngIf="error">
+        Invalid activation key.
+    </div>
+    <div id="login-wrapper">
+        <a [routerLink]="['/account/login']" [queryParams]="{
+            redirect: redirect
+        }">Sign in</a>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+{"_id":{"$oid":"5f7cf8c21ceb971bcf7c15f5"},"action":"1","type":"ACTIVATION_EMAIL_SUCCESS","active":"false","_class":"io.proximax.kyc.domain.AG"}
+{"_id":{"$oid":"5f7cf8c21ceb971bcf7c15f6"},"action":"1","type":"ACTIVATION_EMAIL","active":"false","_class":"io.proximax.kyc.domain.AG"}
+{"_id":{"$oid":"5f7cf8c21ceb971bcf7c15f7"},"action":"1","type":"STATUS_EMAIL","active":"false","_class":"io.proximax.kyc.domain.AG"}
+{"_id":{"$oid":"5f7cf8c21ceb971bcf7c15f8"},"action":"1","type":"SUBMISSION_RECEIVED_EMAIL","active":"false","_class":"io.proximax.kyc.domain.AG"}
+{"_id":{"$oid":"5f7cf8c21ceb971bcf7c15f9"},"action":"1","type":"CREATION_EMAIL","active":"true","_class":"io.proximax.kyc.domain.AG"}
+{"_id":{"$oid":"5f7cf8c21ceb971bcf7c15fa"},"action":"1","type":"APPROVAL_EMAIL","active":"false","_class":"io.proximax.kyc.domain.AG"}
+{"_id":{"$oid":"5f7cf8c21ceb971bcf7c15fb"},"action":"1","type":"FORM_REQUEST_EMAIL_EDIT","active":"false","_class":"io.proximax.kyc.domain.AG"}
+{"_id":{"$oid":"5f7cf8c21ceb971bcf7c15fc"},"action":"1","type":"FORM_REQUEST_EMAIL","active":"false","_class":"io.proximax.kyc.domain.AG"}
+{"_id":{"$oid":"5f7e2ca5681d9e173b7e6527"},"action":"1","type":"PASSWORD_RESET_EMAIL","active":"false","_class":"io.proximax.kyc.domain.AG"}
+{"_id":{"$oid":"5f7f3db4e864bd1205b16230"},"action":"1","type":"REJECTION_EMAIL","active":"true","_class":"io.proximax.kyc.domain.AG"}

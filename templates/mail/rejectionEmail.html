@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:text="#{email.activation.title}">BESC membership activation</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="shortcut icon" th:href="@{|${baseUrl}/favicon.ico|}" />
+    </head>
+    <body>
+    <table cellpadding="0" cellspacing="0" class="esd-footer-popover es-content" align="center">
+        <tbody>
+        <tr>
+            <td class="esd-stripe" align="center">
+                <table class="es-content-body" align="center" cellpadding="0" cellspacing="0" width="600" style="background-color: transparent;">
+                    <tbody>
+                    <tr>
+                        <td class="esd-structure es-p30t es-p30b es-p20r es-p20l" align="left">
+                            <table cellpadding="0" cellspacing="0" width="100%">
+                                <tbody>
+                                <tr>
+                                    <td width="560" class="esd-container-frame" align="center" valign="top">
+                                        <table cellpadding="0" cellspacing="0" width="100%">
+                                            <tbody>
+                                            <tr>
+                                                <td class="esd-block-image es-infoblock" align="center">
+                                                    <a target="_blank" href="http://viewstripo.email/?utm_source=templates&utm_medium=email&utm_campaign=basic&utm_content=training"> <img src="https://yhqdt.stripocdn.email/content/guids/CABINET_07adc8092a36bf5f74c4948995acba1d/images/38841560329382359.png" alt width="125" style="display: block;"> </a>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+        <div align="left">
+        <p th:text="#{email.reset.greeting(${user.login})}">
+            Dear
+        </p>
+        <p >
+            Your BESC membership application have been rejected, due to the following reason:
+        </p>
+        <!--/*@thymesVar id="remarks" type=""*/-->
+        <p th:text="${remarks}"></p>
+        <p>
+            <span>Regards, </span>
+            <br/>
+            <em>BESC KYC Team.</em>
+        </p>
+    </div>
+
+    <table cellpadding="0" cellspacing="0" class="esd-footer-popover es-content" align="center">
+    <tbody>
+        <tr>
+            <td class="esd-stripe" align="center">
+                <table class="es-content-body" align="center" cellpadding="0" cellspacing="0" width="600" style="background-color: transparent;">
+                    <tbody>
+                        <tr>
+                            <td class="esd-structure es-p30t es-p30b es-p20r es-p20l" align="left">
+                                <table cellpadding="0" cellspacing="0" width="100%">
+                                    <tbody>
+                                        <tr>
+                                            <td width="560" class="esd-container-frame" align="center" valign="top">
+                                                <table cellpadding="0" cellspacing="0" width="100%">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="esd-block-image es-infoblock" align="center">
+                                                                <a target="_blank" href="http://viewstripo.email/?utm_source=templates&utm_medium=email&utm_campaign=basic&utm_content=training"> <img src="https://yhqdt.stripocdn.email/content/guids/CABINET_07adc8092a36bf5f74c4948995acba1d/images/38841560329382359.png" alt width="125" style="display: block;"> </a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+    </body>
+</html>

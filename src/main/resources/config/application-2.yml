@@ -1,0 +1,153 @@
+management:
+    endpoints:
+        web:
+            base-path: /management
+            exposure:
+                include: ["configprops", "env", "health", "info", "threaddump"]
+    endpoint:
+        health:
+            show-details: when_authorized
+    info:
+        git:
+            mode: full
+    health:
+        mail:
+            enabled: false # When using the MailService, configure an SMTP server and set this to true
+    metrics:
+        enabled: false # http://micrometer.io/ is disabled by default, as we use http://metrics.dropwizard.io/ instead
+logging:
+    level:
+        ROOT: INFO
+        io.proximax.kyc: INFO
+        io.github.jhipster: INFO
+
+spring:
+    application:
+        name: proxiKYC
+    profiles:
+        # The commented value for `active` can be replaced with valid Spring profiles to load.
+        # Otherwise, it will be filled in by maven when building the WAR file
+        # Either way, it can be overridden by `--spring.profiles.active` value passed in the commandline or `-Dspring.profiles.active` set in `JAVA_OPTS`
+        active: #spring.profiles.active#
+    messages:
+        basename: i18n/messages
+    mvc:
+        favicon:
+            enabled: false
+    devtools:
+        restart:
+            enabled: false
+        livereload:
+            enabled: false
+    data:
+        mongodb:
+            uri: mongodb://10.14.201.7:27017
+            database: proximaxKYC
+    mail:
+        host: smtp.zoho.com
+        port: 587
+        username: kyc.support@proximax.io   #Replace this field with your Zoho username.
+        password: m3qcD$8UBSC;6e}p          #Replace this field with your Zoho password.
+        protocol: smtp
+        tls: true
+        from: kyc.support@proximax.io
+        properties.mail.smtp:
+            auth: true
+            starttls.enable: true
+            ssl.trust: smtp.zoho.com
+    thymeleaf:
+        mode: HTML
+    servlet:
+        multipart:
+            max-file-size: 50MB
+            max-request-size: 50MB
+    cache: true
+server:
+    port: 9000
+        compression:
+            enabled: true
+            mime-types: text/html,text/xml,text/plain,text/css, application/javascript, application/json
+            min-response-size: 2560
+    servlet:
+
+        session:
+            cookie:
+                http-only: true
+
+# Properties to be exposed on the /info management endpoint
+info:
+    # Comma separated list of profiles that will trigger the ribbon to show
+    display-ribbon-on-profiles: "dev"
+
+# ===================================================================
+# JHipster specific properties
+#
+# Full reference is available at: https://www.jhipster.tech/common-application-properties/
+# ===================================================================
+
+jhipster:
+    http:
+        version: V_1_1 # To use HTTP/2 you will need SSL support (see above the "server.ssl" configuration)
+        cache: # Used by the CachingHttpHeadersFilter
+            timeToLiveInDays: 1461
+    security:
+        authentication:
+            jwt:
+                secret: acbf28c426a32ca1d2424e87d160df7628d8263d
+                # Token is valid 24 hours
+                token-validity-in-seconds: 86400
+                token-validity-in-seconds-for-remember-me: 2592000
+    mail: # specific JHipster mail property, for standard properties see MailProperties
+        from: kyc.support@proximax.io
+        base-url: https://kyc-app.proximax.io
+    metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
+        jmx:
+            enabled: true
+        logs: # Reports Dropwizard metrics in the logs
+            enabled: false
+            report-frequency: 60 # in seconds
+    logging:
+        logstash: # Forward logs to logstash over a socket, used by LoggingConfiguration
+            enabled: false
+            host: localhost
+            port: 5000
+            queue-size: 512
+
+# ===================================================================
+# Application specific properties
+# Add your own application properties here, see the ApplicationProperties class
+# to have type-safe configuration, like in the JHipsterProperties above
+#
+# More documentation is available at:
+# https://www.jhipster.tech/common-application-properties/
+# ===================================================================
+
+application:
+    ipfs:
+        host: /ip4/10.14.101.229/tcp/5001
+    jumio:
+        secret: Mzc2MjY0YWUtNmVmNi00ZWRmLWI4ZWQtYzQ3YjU3YjNlZjRiOjk1ZTIwYVBFZ056bUJieWxJNlpGcG04U0lDcHhONjJt
+        url: https://netverify.com/api/netverify/v2/fastfill
+    idm:
+        user: proximax
+        pass: dca91116b595d11144f5c9f2f58e113be283fe2f
+        host: https://staging.identitymind.com/im/account/consumer
+    thomson:
+        url: /v1/
+        host: rms-world-check-one-api-pilot.thomsonreuters.com
+        key: 6d10456b-5f1d-47d3-90f1-5b5f3d267f6e
+        secret: VpHcKfQI8sesvdUGK3un8nW31i7Tf9zKFpZcGirvO87CFi2Ipqxg7sFnFhxOhgjzISOFh+Hu8EQ+E6qZ3blH0g==
+        groups: https://rms-world-check-one-api-pilot.thomsonreuters.com/v1/groups
+        cases: https://rms-world-check-one-api-pilot.thomsonreuters.com/v1/cases
+        profiles: https://rms-world-check-one-api-pilot.thomsonreuters.com/v1/reference/profile/
+    shuftipro:
+        clientid: aaee0ce51abf0849e68b257ab97d83a36d9d082916b939cd1012f27d7f6bb873
+        secret: Q5Rtif09LBFHzI4jqh09Leo8fk06sHBi
+        url: https://shuftipro.com/api/
+    mailgun:
+        messageurl: https://api.mailgun.net/v3/sandbox0b4b1fdea66441228c826878d052e1b0.mailgun.org/messages
+        username: api
+        password: 3f71836edb078390b0d0a982858e6c36-acb0b40c-2896c7fc
+    migration:
+        #enabled: true
+        enabled: false

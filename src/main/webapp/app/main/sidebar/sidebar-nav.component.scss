@@ -1,0 +1,173 @@
+#sidebar-wrapper {
+    width: 50px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9000;
+    background-color: #494e53;
+    transition: all 0.3s ease-in-out;
+    padding-top: 50px;
+
+    &:before {
+        //background-image: url('../../../content/images/sidebar-bg.png');
+        content: '';
+        pointer-events: fill;
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        background-size: cover;
+        height: 100%;
+        transition: all 0.3s ease-in;
+    }
+
+    #control-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50px;
+        z-index: 1;
+
+        button.sidebar-nav-toggler {
+            background-image: url('../../../content/images/list.png');
+            right: 15px;
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            top: 10px;
+            background-color: transparent;
+            border: 0;
+            background-repeat: no-repeat;
+            outline: 0;
+            background-size: 20px;
+            background-position: center;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                background-color: #001E21;
+            }
+        }
+    }
+
+    ul#sidebar-menu {
+        padding-top: 50px;
+        padding-left: 0;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-color: transparent;
+        z-index: 0;
+
+        &:before {
+            //background-image: url('../../../content/images/menu-bg.png');
+            content: '';
+            pointer-events: fill;
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-size: 250px;
+            background-position: center;
+            height: 150px;
+            background-repeat: no-repeat;
+            transition: 0.3s ease;
+        }
+
+        li {
+            height: 56px;
+            padding: 15px 0;
+            transition: all 0.3s ease-in;
+            cursor: pointer;
+            position: relative;
+            width: 50px;
+            overflow: hidden;
+            outline: none;
+
+            .sidebar-icon {
+                width: 15px;
+                height: 15px;
+                margin-left: 15px;
+                margin-right: 5px;
+                position: absolute;
+                margin-top:3px;
+            }
+
+            .sidebar-title {
+                color: #ffffff;
+                font-family: Lato;
+                font-size: 0.9em;
+                opacity: 0;
+                position: absolute;
+                left: 60px;
+                white-space: nowrap;
+                transition: all 0.1s ease-in;
+            }
+
+            &:hover {
+                overflow: visible;
+
+                &:before {
+                    width: 50px;
+                    height: 100%;
+                    background-color: #0399A8;
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    transition: all 0.4s ease-in;
+                }
+
+                .sidebar-title {
+                    padding: 3px 10px 5px;
+                    background: #0399A8;
+                    color: white;
+                    border-radius: 3px;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    &.active {
+        width: 250px;
+
+        &:before {
+            width: 250px;
+        }
+
+        #control-wrapper {
+            button.sidebar-nav-toggler {
+                right: 5px;
+                background-image: url('../../../content/images/left-arrow.png');
+            }
+        }
+
+        ul#sidebar-menu {
+            li {
+                width: 250px;
+                .sidebar-title {
+                    opacity: 1;
+                }
+
+                &:hover {
+                    &:before {
+                        width: 250px;
+                    }
+                    .sidebar-title {
+                        padding: 0;
+                        color: #ffffff;
+                        background: transparent;
+                    }
+                }
+            }
+        }
+    }
+}

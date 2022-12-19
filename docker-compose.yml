@@ -1,0 +1,22 @@
+version: "3.6"
+services:
+  db:
+    image: mongo:4.2.0-bionic
+    - MONGO_INITDB_ROOT_USERNAME=kycadmin
+    - MONGO_INITDB_ROOT_PASSWORD=FVY6sRdmZKNDhewHrqKqkkWc9WfeuQt5
+    - MONGO_INITDB_DATABASE=proximaxKYC
+    stop_signal: SIGINT
+    volumes:
+    - /mongodata:/dbdata:rw
+
+  app:
+    build: .
+    ports:
+      - 9000:9000
+      - 8085:8085
+    volumes:
+      - {{ catapult_config_directory }}:/catapultconfig
+      - {{ catapult_data_directory }}:/data:rw
+      - {{ catapult_logs_directory }}:/logs:rw
+    restart: always
+    # command: sh -c "/catapult/bin/catapult.server /catapultconfig"

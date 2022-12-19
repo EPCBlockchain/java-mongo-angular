@@ -1,0 +1,27 @@
+<div id="master-header">
+   <nav class="navbar navbar-dark bg-dark justify-content-right header-dark">
+      <a class="navbar-brand" [routerLink]="['/']">
+<!--         <img src="../../../content/scss/besc-themes/logo.png" alt="">-->
+          <div id="brand-logo"></div>
+      </a>
+      <div class="pull-right">
+         <div class="d-inline-block" ngbDropdown display="dynamic" placement="bottom-right">
+            <a id="account-dropdown" ngbDropdownToggle>
+                <img style="margin-left: 5px;" src="../../../content/images/account.png" style="width:20px;">
+                Account
+            </a>
+            <div ngbDropdownMenu  aria-labelledby="account-dropdown">
+                <a class="dropdown-item">{{this.username}}</a>
+                <li *ngIf="isMobile"><a [routerLink]="['/forms/pending-requests']" class="dropdown-item"  *ngIf="visibleIf([UserRoles.USER])">Pending Request</a></li>
+                <li *ngIf="isMobile"><a [routerLink]="['/forms/user-submissions']" class="dropdown-item"  *ngIf="visibleIf([UserRoles.USER])">Submitted Forms</a></li>
+                <li *ngIf="isMobile"><a [routerLink]="['/forms']" class="dropdown-item"  *ngIf="visibleIf([UserRoles.OB_TEAM, UserRoles.ORG_ADMIN])">Forms</a></li>
+                <li *ngIf="isMobile"><a [routerLink]="['/forms/screening']" class="dropdown-item" *ngIf="visibleIf([UserRoles.OB_TEAM, UserRoles.ORG_ADMIN])">Screening Forms</a></li>
+                <li *ngIf="isMobile"><a [routerLink]="['/admin/user-management']" class="dropdown-item"  *ngIf="visibleIf([UserRoles.ORG_ADMIN, UserRoles.ADMIN])">Users</a></li>
+                <li *ngIf="isMobile"><a [routerLink]="['/admin/org/list']" class="dropdown-item"  *ngIf="visibleIf([UserRoles.ADMIN])">Organizations</a></li>
+<!--               <a [routerLink]="['/']" class="dropdown-item">Settings</a>-->
+               <a (click)="logout()" class="dropdown-item">Sign Out</a>
+            </div>
+         </div>
+      </div>
+   </nav>
+</div>

@@ -1,0 +1,42 @@
+<div class="modal-header">
+    <h4 class="modal-title">Form Deletion</h4>
+    <button aria-label="Close" data-dismiss="modal" class="close" type="button" (click)="activeModal.dismiss('closed')">
+        <img src="../../../../content/images/close.png" />
+    </button>
+</div>
+<div class="modal-body">
+    <div class="container-fluid">
+        <dt>
+            <span>Email Recipient</span>
+        </dt>
+        <input type="text" class="form-control" name="allowedHosts" [formControl]="email" />
+
+        <dt>
+            <span>Receives Submissions</span>
+        </dt>
+        <select name="submissions" id="submissions" (change)="emailToAdd.submission = $event.target.value === 'true'">
+            <option value="true">YES</option>
+            <option value="false">NO</option>
+        </select>
+        <dt>
+            <span>Receives Approvals</span>
+        </dt>
+        <select name="approvals" id="approvals" (change)="emailToAdd.approve = $event.target.value === 'true'">
+            <option value="true">YES</option>
+            <option value="false">NO</option>
+        </select>
+        <dt>
+            <span>Receives Rejections</span>
+        </dt>
+        <select name="rejections" id="rejections" (change)="emailToAdd.reject = $event.target.value === true">
+            <option value="true">YES</option>
+            <option value="false">NO</option>
+        </select>
+    </div>
+</div>
+<div class="modal-footer">
+    <div class="clearfix text-right">
+        <button class="btn btn-secondary" (click)="addEmail()">Add</button>
+        <button class="btn btn-default" (click)="activeModal.dismiss('closed')">Cancel</button>
+    </div>
+</div>

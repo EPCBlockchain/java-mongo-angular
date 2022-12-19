@@ -1,0 +1,7 @@
+<div class="clearfix" id="formio-component">
+    <h1>{{ title }}</h1>
+    <br>
+    <ng-template [ngIf]="form != null">
+       <formio (ready)="fetchImages(data)" (change)="onChange($event)" (nextPage)="onNext($event)" (prevPage)="onPrev($event)" [refresh]="refreshForm" [form]="form" [submission]="{ data : data }" [service]="service" [readOnly]="readOnly" (submit)="onSubmit($event)" (beforeSubmit)="beforeSubmit($event)"></formio>
+    </ng-template>
+ </div>

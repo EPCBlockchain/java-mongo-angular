@@ -1,0 +1,296 @@
+    <div class="clearfix" id="formio-component">
+      <ng-template [ngIf]="isReady">
+            <div class="table-control-group clearfix">
+                  <span class="page-title">Submission Screening</span>
+                  <br>
+                  <ng-template [ngIf]="formSubmission.status">
+                        <small><b>Submission Status</b> : {{ formSubmission.status }}</small>
+                  </ng-template>
+                  <br><small><b>Last Screened By</b> : {{ formSubmission.lastUpdatedBy }}</small>
+                  <div class="btn-group pull-right" role="group">
+                        <a [routerLink]="['/forms/submissions' , submissionId]" target="_blank">Form Reference</a>
+                  </div>
+            </div>
+            <button class="btn btn-secondary" (click)="back()">Back</button>
+
+
+            <ngb-accordion 
+                  id="screening-accordion-0" 
+                  #acc="ngbAccordion" 
+                  activeIds="form-panel-0" 
+                  [destroyOnHide]="false"
+                  *ngIf="formSubmission.dataApi==='true'"
+            >
+                  <ngb-panel id="form-panel-0">
+                        <ng-template ngbPanelTitle style='width: 100%;' >
+                              <span class="page-title" style='color:#333333'>{{ screeningForm.title }}</span>
+                              <input type="hidden" id="_nameForm_" name="_nameForm_" value="{{ screeningForm.title }}">
+                        </ng-template>   
+                        
+
+                        <ng-template ngbPanelContent  *ngIf="formSubmission.formId ==='615467de527bf300012631c9'" >
+                              Id Form<br>
+                              <div ref="element1">
+                              <input id="idForm" value="{{formSubmission.dataFormio.id_form}}" spellcheck="true" disabled="disabled" placeholder="" lang="en" class="form-control" type="text" ref="input">                              
+                              </div>
+                              <br><br>
+                        
+                              Name<br>
+                              <div ref="element2">
+                              <input id="e9neck6" value="{{formSubmission.dataFormio.e9neck6}}" spellcheck="true" disabled="disabled" placeholder="" lang="en" class="form-control" type="text" ref="input">                              
+                              </div>
+                              <br><br>
+                        
+                              Surname<br>
+                              <div ref="element3">
+                              <input id="ekx0q1p" value="{{formSubmission.dataFormio.ekx0q1p}}" spellcheck="true" disabled="disabled" placeholder="" lang="en" class="form-control" type="text" ref="input">                              
+                              </div>
+                              <br><br>
+                        
+                        
+                              Identification Number<br>
+                              <div ref="element4">
+                              <input id="efjjuau" value="{{formSubmission.dataFormio.efjjuau}}" spellcheck="true" disabled="disabled" placeholder="" lang="en" class="form-control" type="text" ref="input">                              
+                              </div>
+                              <br><br>
+                        
+                        
+                              Email<br>
+                              <div ref="element5">
+                              <input id="ena1q9d" value="{{formSubmission.dataFormio.ena1q9d}}" spellcheck="true" disabled="disabled" placeholder="" lang="en" class="form-control" type="text" ref="input">                              
+                              </div>
+                              <br><br>
+                        
+                        
+                              Public Key<br>
+                              <div ref="element6">
+                              <input id="etmftam" value="{{formSubmission.dataFormio.etmftam}}" spellcheck="true" disabled="disabled" placeholder="" lang="en" class="form-control" type="text" ref="input">                              
+                              </div>
+                              <br><br>
+
+                              <b>Files</b>
+                              <br> <hr>
+                              <table style="width:50%">
+                                    <thead>
+                                          <tr>
+                                                <th>#</th>
+                                                <th>Nombre Archivo --</th>
+                                                <th>Tipo archivo</th>
+                                                <th>Archivo</th>
+                                          </tr>
+                                    </thead>
+                                    <tbody>
+                                          <tr *ngFor="let item of formSubmission.dataFormio.file;let indice=index">
+                                                <td>{{indice+1}}</td>
+                                                <td>{{item.file_name}}</td>
+                                                <td>{{item.content_type}}</td>
+                                                <td style='text-align:left;' ><a href='https://ipfs1.proximaxtest.com/ipfs/{{item.ipfs_hash}}' target="_blank" > Ver </a></td>
+                                          </tr>
+                                    </tbody>
+                              </table>                              
+                              
+
+
+
+
+                              <br><br>
+                              <em>
+                              <p>Data inserted from API.</p>
+                              </em>
+                        </ng-template>
+                        
+                        <ng-template ngbPanelContent *ngIf="formSubmission.formId ==='6153a4f4527bf300012631c8'" >
+                              Id Form<br>
+                              <div ref="element1_">
+                              <input id="idForm_" value="{{formSubmission.dataFormio.id_form}}" spellcheck="true" disabled="disabled" placeholder="" lang="en" class="form-control" type="text" ref="input">                              
+                              </div>
+                              <br><br>
+                        
+                              Name<br>
+                              <div ref="element2_">
+                              <input id="e5i6bs" value="{{formSubmission.dataFormio.e5i6bs}}" spellcheck="true" disabled="disabled" placeholder="" lang="en" class="form-control" type="text" ref="input">                              
+                              </div>
+                              <br><br>
+                        
+                              Surname<br>
+                              <div ref="element3_">
+                              <input id="e4kpbp" value="{{formSubmission.dataFormio.e4kpbp}}" spellcheck="true" disabled="disabled" placeholder="" lang="en" class="form-control" type="text" ref="input">                              
+                              </div>
+                              <br><br>
+                        
+                        
+                              Identification o Rif<br>
+                              <div ref="element4_">
+                              <input id="efjjuau" value="{{formSubmission.dataFormio.efjjuau}}" spellcheck="true" disabled="disabled" placeholder="" lang="en" class="form-control" type="text" ref="input">                              
+                              </div>
+                              <br><br>
+                        
+                        
+                              Email<br>
+                              <div ref="element5_">
+                              <input id="er9vyit" value="{{formSubmission.dataFormio.er9vyit}}" spellcheck="true" disabled="disabled" placeholder="" lang="en" class="form-control" type="text" ref="input">                              
+                              </div>
+                              <br><br>
+                        
+                              Documento Identidad<br>
+                              <div ref="element6_">
+                              <input id="idi6bs" value="{{formSubmission.dataFormio.idi6bs}}" spellcheck="true" disabled="disabled" placeholder="" lang="en" class="form-control" type="text" ref="input">                              
+                              </div>
+                              <br><br>
+
+                              Direccion<br>
+                              <div ref="element7_">
+                              <input id="dirn6bs" value="{{formSubmission.dataFormio.dirn6bs}}" spellcheck="true" disabled="disabled" placeholder="" lang="en" class="form-control" type="text" ref="input">                              
+                              </div>
+                              <br><br>
+
+                              Declaracion Origen Fondos<br>
+                              <div ref="element8_">
+                              <input id="d3ecF0n6bs" value="{{formSubmission.dataFormio.d3ecF0n6bs}}" spellcheck="true" disabled="disabled" placeholder="" lang="en" class="form-control" type="text" ref="input">                              
+                              </div>
+                              <br><br>
+
+
+                              <b>Files</b>
+                              <br> <hr>
+                              <table style="width:50%">
+                                    <thead>
+                                          <tr>
+                                                <th>#</th>
+                                                <th>Nombre Archivo</th>
+                                                <th>Tipo archivo</th>
+                                                <th>Archivo</th>
+                                          </tr>
+                                    </thead>
+                                    <tbody>
+                                          <tr *ngFor="let item of formSubmission.dataFormio.file;let indice=index">
+                                                <td>{{indice+1}}</td>
+                                                <td>{{item.file_name}}</td>
+                                                <td>{{item.content_type}}</td>
+                                                <td style='text-align:left;' ><a href='https://ipfs2-dev.proximax.io/ipfs/{{item.ipfs_hash}}' target="_blank" > Ver </a></td>
+                                          </tr>
+                                    </tbody>
+                              </table>                              
+                              
+                              <br><br>
+                              <em>
+                              <p>Data inserted from API.</p>
+                              </em>
+                        </ng-template>
+
+                  </ngb-panel>
+            </ngb-accordion>
+
+            <br>
+            
+            <ngb-accordion 
+            id="screening-accordion-9" 
+            #acc="ngbAccordion" 
+            activeIds="form-panel-9" 
+            [destroyOnHide]="false"
+            *ngIf="formSubmission.dataApi==='true'"
+      >
+            <ngb-panel id="form-panel-9">
+                  <ng-template ngbPanelTitle style='width: 100%;' >
+                        <span class="page-title" style='color:#333333'>Remarks</span>
+                  </ng-template>   
+                  
+                  <ng-template ngbPanelContent>
+
+                        <div ref="element-0">
+                        {{formSubmission.remarks}}                              
+                        </div>
+                        <br><br>
+
+                  </ng-template>
+                  
+
+            </ngb-panel>
+      </ngb-accordion>            
+            
+            
+            <br><br>
+            
+            <ngb-accordion 
+                  id="screening-accordion" 
+                  #acc="ngbAccordion" 
+                  activeIds="form-panel, screening-panel, remarks-panel" 
+                  [destroyOnHide]="false"
+                  *ngIf="!formSubmission.dataApi"
+            >
+                  <ngb-panel id="form-panel">
+                        <ng-template ngbPanelTitle>
+                              <span class="page-title">{{ screeningForm.title }}</span>
+                              <input type="hidden" id="_nameForm_" name="_nameForm_" value="{{ screeningForm.title }}">
+                        </ng-template>                        
+    
+                        <ng-template
+                               
+                              ngbPanelContent>
+                              <formio 
+                                     [form]="screeningForm" 
+                                     (ready)="fetchImages(formSubmission.data)" 
+                                     [refresh]="refreshForm"
+                                     [readOnly]="isViewOnly" 
+                                     [service]="screeningService" 
+                                     [submission]="{ data : formSubmission.data }">
+                              </formio>
+                        </ng-template>
+                  </ngb-panel>
+                  <ng-template [ngIf]="screeningDataReady">
+                        <ngb-panel id="screening-panel">
+                              <ng-template ngbPanelTitle>
+                                    <span class="page-title">External Screening</span>
+                              </ng-template>
+                              <ng-template ngbPanelContent>
+                                    <ng-template [ngIf]="screeningType === ScreeningType.IDENTITY_MIND">
+                                          <jhi-identity-mind-screening [inputResult]="screeningResult"></jhi-identity-mind-screening>
+                                    </ng-template>
+                                    <ng-template [ngIf]="screeningType === ScreeningType.JUMIO">
+                                          <jhi-jumio-screening [inputResult]="screeningResult"></jhi-jumio-screening>
+                                    </ng-template>
+                                    <ng-template [ngIf]="screeningType === ScreeningType.SHUFTI_PRO">
+                                          <jhi-shufti-screening [inputResult]="screeningResult"></jhi-shufti-screening>
+                                    </ng-template>
+                                    <ng-template [ngIf]="screeningType === ScreeningType.THOMSON_REUTERS">
+                                          <jhi-thomson-reuters-screening [inputResult]="screeningResult"></jhi-thomson-reuters-screening>
+                                    </ng-template>
+                              </ng-template>
+                        </ngb-panel>
+                  </ng-template>
+                <ng-template [ngIf]="formSubmission.remarks">
+                    <ngb-panel id="remarks-panel">
+                        <ng-template ngbPanelTitle>
+                            <span class="page-title">REMARKS</span>
+                        </ng-template>
+                        <ng-template ngbPanelContent>
+                            {{ formSubmission.remarks }}
+                        </ng-template>
+                    </ngb-panel>
+                </ng-template>
+            </ngb-accordion>
+            <ng-template [ngIf]="!isViewOnly">
+            </ng-template>
+            <div class="container-fluid">
+                  <div class="row justify-content-end">
+<!--                      <button class="btn btn-secondary" (click)="requestScreening()">Request Screening</button>-->
+                  
+                  <!--<ng-template [ngIf]="isNotAdmin && notResend">-->
+                  <ng-template>
+                        <button class="btn btn-default" (click)="furtherApproval()" *ngIf="formSubmission.status !== FormStatus.ESCALATED">Escalate.</button>
+                        <!-- <button class="btn btn-default" (click)="furtherApproval()" *ngIf="formSubmission.status !== FormStatus.FURTHER_APPROVAL">Needs Further Approval</button>-->
+                  </ng-template>
+                  <!--<ng-template [ngIf]="notResend">-->
+                  <ng-template>
+
+                  </ng-template>
+                  <!-- <button class="btn btn-default" (click)="furtherApproval()" *ngIf="formSubmission.status !== FormStatus.FURTHER_APPROVAL">Needs Further Approval</button>-->
+                  <button class="btn btn-default" (click)="furtherApproval()" *ngIf="formSubmission.status !== FormStatus.ESCALATED">Escalate..</button>
+                  <button class="btn btn-default" (click)="resendToCustomer()">Return to Customer.</button>
+                  <button class="btn btn-secondary" (click)="approveForm()" *ngIf="formSubmission.status !== FormStatus.APPROVED">Approve.</button>
+                  <button class="btn btn-default" (click)="rejectForm()" *ngIf="formSubmission.status !== FormStatus.REJECTED">Reject.</button>
+                  </ng-template>
+            </div>
+            </div>
+      </ng-template>
+</div>

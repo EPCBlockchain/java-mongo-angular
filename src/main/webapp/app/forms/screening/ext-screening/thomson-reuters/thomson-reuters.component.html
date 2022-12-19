@@ -1,0 +1,48 @@
+<ng-template [ngIf]="inputResult">
+      <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+            <p>
+               <h2><span>Thomson results </span></h2>
+            </p>
+            Including {{thomsonTotalItems}} different result(s)
+      </div>
+      <table class="table table-striped">
+            <thead class="thead-light">
+                  <tr>
+                     <th scope="col">Reference ID</th>
+                     <th scope="col">Categories</th>
+                     <th scope="col">Match Strength</th>
+                     <th scope="col">Matched Term</th>
+                  </tr>
+            </thead>
+            <tbody *ngIf="thomsonResultsForView !== null">
+               <tr *ngFor="let item of thomsonResultsForView">
+                     <td><a (click)="test(item.referenceId)" target="_blank">{{item.referenceId}}</a></td>
+                     <td>{{item.categories}}</td>
+                     <td>{{item.matchStrength}}</td>
+                     <td>{{item.matchedTerm}}</td>
+               </tr>
+            </tbody>
+      </table>
+      <div class="input-group mb-3">
+            <div class="input-group-prepend">
+               <label class="input-group-text" for="selectThomsonItemsTotal">Show</label>
+            </div>
+            <select class="custom-select" id="selectThomsonItemsTotal" (change)="setThomsonItemsPerPage($event.target.value)">
+               <option selected>{{thomsonItemsPerPage}}</option>
+               <option value="10">10</option>
+               <option value="25">25</option>
+               <option value="50">50</option>
+               <option value="100">100</option>
+            </select>
+      </div>
+      <div *ngIf="thomsonResultsForView !== null">
+         <div class="row justify-content-center table-page-count">
+               <jhi-item-count [page]="thomsonPage" [total]="thomsonTotalItems" [itemsPerPage]="thomsonItemsPerPage"></jhi-item-count>
+         </div>
+         <div class="row justify-content-center">
+               <ngb-pagination [collectionSize]="thomsonTotalItems" [(page)]="thomsonPage"
+                     [pageSize]="thomsonItemsPerPage" [maxSize]="5" [rotate]="true"
+                     [boundaryLinks]="true" (pageChange)="loadThomsonTable(thomsonPage)"></ngb-pagination>
+         </div>
+      </div>
+</ng-template>

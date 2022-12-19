@@ -1,0 +1,28 @@
+::ng-deep #screening-accordion {
+    .card {
+        margin-bottom: 5px;
+        border-bottom: 1px solid #ddd;
+
+        .card-header[role='tab'] {
+            .btn-link {
+                border: 0;
+                color: #333;
+                line-height: 0;
+                font-size: 1em;
+
+                margin-left: -10px;
+
+                &:hover,
+                &:focus {
+                    text-decoration: none;
+                }
+            }
+        }
+
+        img {
+            max-width: 100%;
+        }
+    }
+    margin-bottom: 15px;
+    display: block;
+}

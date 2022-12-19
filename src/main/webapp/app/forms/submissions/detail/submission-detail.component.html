@@ -1,0 +1,25 @@
+<div class="clearfix" id="formio-component">
+  <ng-template [ngIf]="form">
+    <div class="table-control-group clearfix">
+      <span class="page-title">{{ form.title }}</span>
+      <div class="btn-group pull-right" role="group">
+        
+        <ng-template [ngIf]="!isScreeningForm">
+          <button class="btn btn-secondary" (click)="createScreening()" data-toggle="tooltip" title="Create Screening">
+            {{ buttonTitle }}
+          </button>
+          <button class="btn btn-secondary" (click)="back()">Back</button>
+        </ng-template>
+        
+        <ng-template [ngIf]="isScreeningForm">
+          <a [routerLink]="['/forms/submissions' , referenceId]" target="_blank">Form Reference</a>
+        </ng-template>
+        
+      </div>
+    </div>
+
+    <div class="clearfix">
+      <formio [readOnly]="true" [viewOnly]="true"  (ready)="fetchImages(submissionData)" [refresh]="refreshForm" [form]="form" [submission]="{ data: submissionData }"></formio>
+    </div>
+  </ng-template>
+</div>

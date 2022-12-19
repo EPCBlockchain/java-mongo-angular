@@ -1,0 +1,54 @@
+// Your custom styles
+
+
+
+#master-header nav, #master-header nav .header-dark{
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 8px 0px, rgba(0, 0, 0, 0.19) 9px 1px 20px 0px;
+    background: rgb(53, 166, 89) !important;
+}
+
+.card{
+    border-radius: 2px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px 0px, rgba(0, 0, 0, 0.19) 0px 6px 20px 0px;
+    background-color: #fff;
+    margin-bottom: 30px;
+}
+
+#kyc-footer{
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 8px 0px, rgba(0, 0, 0, 0.19) 9px 1px 20px 0px;
+    background: rgb(53, 166, 89) !important;
+}
+
+#content-page{
+    background-image: url(besc-themes/Background_image.jpg);
+    background-size: cover;
+}
+
+#sidebar-wrapper #control-wrapper button.sidebar-nav-toggler:hover{
+    background-color: transparent !important;
+}
+#sidebar-wrapper{
+    box-shadow: rgba(0, 0, 0, 0.2) 7px 1px 8px 0px, rgba(0, 0, 0, 0.19) 9px 1px 20px 0px;
+    background-image: url(besc-themes/sidebar_background_image.png);
+    background-size: cover;
+}
+
+#account-wrapper #account-container #xpx-logo {
+    background-image: url(besc-themes/logo.png) !important;
+    width: 200px !important;
+}
+
+#brand-logo {
+    width: 70px !important;
+    height: 20px !important;
+    background-position: left;
+    background-image: url(./besc-themes/logo.png) !important;
+}
+
+div#account-wrapper {
+    background-image: url(./besc-themes/Background_image.jpg) !important;
+}
+
+div#account-container {
+    color: white;
+}

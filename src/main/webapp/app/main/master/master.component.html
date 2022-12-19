@@ -1,0 +1,12 @@
+<!--<jhi-sidebar-nav *ngIf="isMobile"></jhi-sidebar-nav>-->
+<jhi-sidebar-nav *ngIf="!isMobile" ></jhi-sidebar-nav>
+<div id="content-page">   
+    <jhi-master-header></jhi-master-header>
+    <div class="main-content card jh-card" id="main-content">
+           
+        <router-outlet></router-outlet>
+        
+        <!-- <router-outlet name="popup"></router-outlet> -->
+    </div>
+   <jhi-footer *ngIf="!isMobile"></jhi-footer>
+</div>

@@ -1,0 +1,139 @@
+<div class="clearfix">
+    <ng-template [ngIf]="form">
+        <div class="row justify-content-end mb-3">
+            <ng-template [ngIf]="form.id">
+                <button class="btn btn-secondary" (click)="viewPublishedForm()">View Form</button>
+            </ng-template>
+            <ng-template [ngIf]="principal.hasAnyAuthorityDirect(['ROLE_ORGANIZATION_ADMIN', 'ROLE_ADMIN'])">
+                <ng-template [ngIf]="!detailOptions.isEditting">
+                    <button class="btn btn-secondary" (click)="editForm()">Edit Form</button> 
+                </ng-template>
+                <ng-template [ngIf]="detailOptions.isEditting">
+                    <button class="btn btn-secondary" (click)="importForm()">Import Form</button>
+                </ng-template>
+            </ng-template>
+            <ng-template [ngIf]="!detailOptions.isEditting">
+                <ng-template [ngIf]="detailOptions.isKYCForm">
+                    <button class="btn btn-secondary" (click)="openRequest()">Send Request</button>
+                </ng-template>
+            </ng-template>
+            <ng-template [ngIf]="principal.hasAnyAuthorityDirect(['ROLE_ORGANIZATION_ADMIN', 'ROLE_ADMIN']) && detailOptions.isEditting">
+                <button class="btn btn-secondary" (click)="saveForm()">Save Form</button>
+                <ng-template [ngIf]="!detailOptions.isNew">
+                    <button class="btn btn-secondary" (click)="discardChanges()">Discard Changes</button>
+                </ng-template>
+            </ng-template>
+            <ng-template [ngIf]="!detailOptions.isNew">
+                <button class="btn btn-secondary" (click)="redirectToSubmissions()">View Submissions</button>
+            </ng-template>
+
+            <ng-template [ngIf]="principal.hasAnyAuthorityDirect(['ROLE_ORGANIZATION_ADMIN', 'ROLE_ADMIN'])">
+                <!--
+                <ng-template [ngIf]="detailOptions.isKYCForm">
+                    <button class="btn btn-secondary" (click)="viewCredentialContents()">View Credential Contents</button>
+                </ng-template>
+                -->
+                <ng-template [ngIf]="!detailOptions.isEditting">
+                    <button class="btn btn-secondary" (click)="exportForm()">Export Form</button>
+                    <button class="btn btn-danger" (click)="deleteForm()">Delete Form</button>
+                </ng-template>
+            </ng-template>
+            
+            <button class="btn btn-secondary" (click)="back()">Back</button>
+        </div>
+        <ng-template
+            [ngIf]="
+                detailOptions.isKYCForm &&
+                principal.hasAnyAuthorityDirect(['ROLE_ADMIN']) &&
+                !detailOptions.isNew &&
+                !detailOptions.isEditting
+            "
+        >
+            <div class="container-fluid" style="padding: 15px; background-color: #f5f5f5; margin-bottom: 5px;">
+                <b>Anonymous link : </b><a [href]="formLinks.anonymous" target="_blank">{{ formLinks.anonymous }}</a>
+                <br />
+                <b>Authenticated link : </b><a [href]="formLinks.authenticated" target="_blank">{{ formLinks.authenticated }}</a>
+            </div>
+        </ng-template>
+        <div id="build-holder" [ngClass]="{ editting: detailOptions.isEditting }">
+            <div class="container-fluid px-0">
+                <h1 *ngIf="form.id">{{ form.title }}</h1>
+                <ng-template [ngIf]="form.lastUpdatedBy && !detailOptions.isEditting">
+                    <small>Last Updated By: {{ form.lastUpdatedBy }}</small>
+                </ng-template>
+                <div class="clearfix">
+                    <div class="form-group">
+                        <label for="formTitle" class="control-label">Title</label>
+                        <input
+                            type="text"
+                            id="formTitle"
+                            class="form-control"
+                            maxlength="50"
+                            [value]="form.title || ''"
+                            (change)="onTitleChange($event.target.value)"
+                        />
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid px-0">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="display" class="control-label">Display</label>
+                        <select id="display" class="form-control" [value]="form.display" (change)="onFormSelectChange($event)">
+                            <option value="form">FORM</option>
+                            <option value="wizard">WIZARD</option>
+                        </select>
+                    </div>
+                    <ng-template [ngIf]="principal.hasAnyAuthorityDirect(['ROLE_ADMIN'])">
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Organization</label>
+                            <input
+                                [value]="autocomplete.organization.name"
+                                type="text"
+                                class="form-control"
+                                id="organization"
+                                (keyup)="displayOrganizationBadges($event)"
+                                placeholder="Type to search for Organization"
+                            />
+                            <span *ngFor="let item of autocomplete.organization.badges" (click)="useOrganizationValue(item)">
+                                <button class="badge" [value]="item.id">{{ item.name }}</button>
+                            </span>
+                        </div>
+                    </ng-template>
+                    <ng-template [ngIf]="detailOptions.isKYCForm && autocomplete.organization.selected">
+                        <ng-template [ngIf]="autocomplete.organization.selected">
+                            <div class="form-group col-md-6">
+                                <label class="control-label">Screening Form</label>
+                                <input
+                                    [value]="autocomplete.screening.title"
+                                    type="text"
+                                    class="form-control"
+                                    id="screening-form"
+                                    (keyup)="displayScreeningBadges($event)"
+                                    placeholder="Type to search for a screening form"
+                                />
+                                <span *ngFor="let item of autocomplete.screening.badges" (click)="useScreeningValue(item)">
+                                    <button class="badge" [value]="item.id">{{ item.title }}</button>
+                                </span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <jhi-typeahead-wrapper
+                                    (onChange)="onAutocompleteChange($event)"
+                                    [options]="credentials"
+                                    [label]="'Attach Credential'"
+                                    [selectedId]="form.credentialId">
+                                </jhi-typeahead-wrapper>
+                            </div>
+                        </ng-template>
+                    </ng-template>
+                </div>
+            </div>
+            <div class="container-fluid px-0">
+                <div class="form-group">
+                    <!-- <ng-template [ngIf]="isEditting"></ng-template> -->
+                    <form-builder [form]="form"></form-builder>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</div>

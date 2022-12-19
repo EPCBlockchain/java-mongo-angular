@@ -1,0 +1,209 @@
+<div class="clear-fix">
+    <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+        <h2>Users</h2>
+        <div class="text-right table-control-group" >
+            <div class="btn-group" role="group">
+                <button class="btn btn-primary float-right jh-create-entity" [routerLink]="['./new']">
+                    <span>Create a new User</span>
+                </button>
+                <button class="btn btn-secondary" (click)="filter()" style="margin-right: 5px;" >Filter Options</button>
+            </div>
+        </div>
+    </div>
+        <div _ngcontent-hur-c8="" class="panel" id='filterFormData' style="display: none" >
+    <form> 
+        <div _ngcontent-hur-c8="" class="row">
+            <div _ngcontent-hur-c8="" class="col-3 form-group ng-star-inserted"> 
+                <p _ngcontent-hur-c8="">ID</p>
+                <input [(ngModel)]="idFilter" _ngcontent-hur-c8="" class="form-control ng-star-inserted" style="margin-right: 5px;" type="text" name="idFilter" id="idFilter">   
+            </div>
+            <!--
+            <div _ngcontent-hur-c8="" class="col-3 form-group ng-star-inserted"> 
+                <p _ngcontent-hur-c8="">Title</p>
+                <input _ngcontent-hur-c8="" class="form-control ng-star-inserted" style="margin-right: 5px;" type="text" id="title">
+            </div>
+            -->
+            <div _ngcontent-hur-c8="" class="col-3 form-group ng-star-inserted">
+                <p _ngcontent-hur-c8="">Login</p>
+                <input [(ngModel)]="name1Filter" _ngcontent-hur-c8="" class="form-control ng-star-inserted" style="margin-right: 5px;" type="text" name="name1Filter" id="name1Filter">
+            </div>
+
+            <div _ngcontent-hur-c8="" class="col-3 form-group ng-star-inserted">
+                <p _ngcontent-hur-c8="">First_name</p>
+                <input [(ngModel)]="name2Filter" _ngcontent-hur-c8="" class="form-control ng-star-inserted" style="margin-right: 5px;" type="text" name="name2Filter" id="name2Filter">
+            </div>
+
+            <div _ngcontent-hur-c8="" class="col-3 form-group ng-star-inserted">
+                <p _ngcontent-hur-c8="">Last name</p>
+                <input [(ngModel)]="name3Filter" _ngcontent-hur-c8="" class="form-control ng-star-inserted" style="margin-right: 5px;" type="text" name="name3Filter" id="name3Filter">
+            </div>
+
+            <div _ngcontent-hur-c8="" class="col-3 form-group ng-star-inserted">
+                <p _ngcontent-hur-c8="">Email</p>
+                <input [(ngModel)]="name4Filter" _ngcontent-hur-c8="" class="form-control ng-star-inserted" style="margin-right: 5px;" type="text" name="name4Filter" id="name4Filter">
+            </div>
+            
+            <div  _ngcontent-hur-c8="" class="col-3 form-group ng-star-inserted">
+                <p _ngcontent-hur-c8="">Activated</p>
+                <select [(ngModel)]="statusFilter" id="statusFilter" name="statusFilter" class="form-control form-control-sm">
+                    <option value=''>----</option>
+                    <option value="true" ng-reflect-value="ACTIVE" class="ng-star-inserted">active</option>
+                    <option value="false" ng-reflect-value="INACTIVE" class="ng-star-inserted">inactive</option>
+                    <option value="all" ng-reflect-value="all" class="ng-star-inserted">all</option>
+                </select>
+            </div>
+
+            <div _ngcontent-hur-c8="" class="col-3 form-group ng-star-inserted">
+                <p _ngcontent-hur-c8="">Date Created</p>
+                <input [(ngModel)]="creationDate" id="creationDate" name="creationDate" _ngcontent-hur-c8="" class="form-control ng-star-inserted" placeholder="mm/dd/yyyy" style="margin-right: 5px;" type="date" >
+            </div>
+            <!--
+            <div _ngcontent-hur-c8="" class="col-3 form-group ng-star-inserted">
+                <p _ngcontent-hur-c8="">Last Updated</p>
+                <input [(ngModel)]="lastUpdated" id="lastUpdated" name="lastUpdated" _ngcontent-hur-c8="" class="form-control ng-star-inserted" placeholder="mm/dd/yyyy" style="margin-right: 5px;" type="date" id="lastUpdated">
+            </div>
+            -->
+        </div> 
+        <button _ngcontent-hur-c8="" class="btn btn-secondary" style="margin-top:5px;" (click)="searchFilter()">Filter</button> 
+        <input type="reset" _ngcontent-hur-c8="" class="btn btn-danger" style="margin-top:5px;" value='Clear'> 
+        <button _ngcontent-hur-c8="" class="btn btn-secondary" style="margin-top:5px;" (click)="filter()">Close</button>
+        <button _ngcontent-hur-c8="" class="btn btn-secondary" style="margin-top:5px;" (click)="ngOnInit()">Show All</button>
+    </form>
+    </div>
+    <div  id='infoTable1' class="table-responsive" *ngIf="users">
+        <table class="table table-striped">
+            <thead class="thead-light">
+                <tr>
+                    <!-- <th><span>ID</span></th> -->
+                    <th><span>Login</span></th>
+                    <th><span>Email</span></th>
+                    <th><span>Status Prospect</span></th>
+                    <th><span>Profiles</span></th>
+                    <th><span>Created Date</span></th>
+                    <th><span>Last Modified </span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody *ngIf="users">
+                
+                <tr           *ngFor="let user of users; trackBy: trackIdentity; let i = index" (dblclick)="navigate(user)">
+                    <!-- <td>{{ user.id }}</td> -->
+                    <td>{{ user.login }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>                        
+                        <div *ngIf="user.status == 'APPROVED'" style='background-color:#20B5AC;color:#ffffff;text-align: center;padding:4px;border-radius: 5px;' class="d-md-inline">
+                            {{ user.status }} 
+                        </div>
+
+                        <div *ngIf="user.status == 'RETURNED_TO_CUSTOMER'" style='background-color:#edff00;color:#ffffff;text-align: center;padding:4px;border-radius: 5px;' class="d-md-inline">
+                            {{ user.status }} 
+                        </div>
+
+                        <div *ngIf="user.status == 'PENDING_APPROVAL'" style='background-color:#F4A900;color:#ffffff;text-align: center;padding:4px;border-radius: 5px;' class="d-md-inline">
+                            {{ user.status }} 
+                        </div>
+
+                        <div *ngIf="user.status == 'ESCALATED'" style='background-color:#F16521;color:#ffffff;text-align: center;padding:4px;border-radius: 5px;' class="d-md-inline">
+                            {{ user.status }}
+                        </div>
+
+                        <div *ngIf="user.status == 'REJECTED'" style='background-color:#b0b0b0;color:#000000;text-align: center;padding:4px;border-radius: 5px;' class="d-md-inline">
+                            {{ user.status }} 
+                        </div>
+
+                        <div *ngIf="user.status == 'DRAFT'" style='background-color:#DDD3B9;color:#ffffff;text-align: center;padding:4px;border-radius: 5px;' class="d-md-inline">
+                            {{ user.status }} 
+                        </div>
+
+                        <div *ngIf="user.status == 'RESEND'" style='background-color:#d8a016;color:#ffffff;text-align: center;padding:4px;border-radius: 5px;' class="d-md-inline">
+                            RETURNED TO CUSTOMER
+                        </div>
+                        <!--
+                        <div *ngFor="let data of screeningSubmissionsData; trackBy: trackIdentity; let i = index" style='height: 120%'>
+                            <div *ngIf="screeningSubmissionsData[i]['user_id'] == user.id" >
+                                {{ screeningSubmissionsData[i]['_id'] }} {{ screeningSubmissionsData[i]['status'] }} {{ screeningSubmissionsData[i]['last_update'] }}
+                            </div>
+                        </div>
+                        -->
+                        <!--
+                        <button class="btn btn-danger btn-sm" *ngIf="!user.activated">Deactivated</button>
+                        <button class="btn btn-success btn-sm" *ngIf="user.activated" [disabled]="currentAccount.login === user.login">
+                            Activated
+                        </button>
+                        -->
+                    </td>
+                    <td>
+                        <div *ngFor="let authority of user.authorities">
+                            <span class="badge badge-info">{{ authority }}</span>
+                        </div>
+                    </td>
+                    <td>{{ user.createdDate | date: 'dd/MM/yy HH:mm' }}</td>
+                    <td>{{ user.lastModifiedBy }}<br>{{ user.lastModifiedDate | date: 'dd/MM/yy HH:mm' }}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <!--<button type="submit"-->
+                            <!---->
+                            <!--class="btn btn-info btn-sm">-->
+                            <!--<fa-icon [icon]="'eye'"></fa-icon>-->
+                            <!--<span class="d-md-inline" >View</span>-->
+                            <!--</button>-->
+                            <!-- <button type="submit" style="margin-right: 5px;" [routerLink]="['./', user.login, 'edit']"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="d-md-inline" >Edit</span>
+                        </td> -->
+                            <button
+                                type="button"
+                                (click)="deleteUser(user)"
+                                class="btn btn-danger btn-sm"
+                                [disabled]="currentAccount.login === user.login"
+                            ><i class="material-icons">delete</i></button>
+                            
+                            <hr>
+                            <button 
+                                *ngIf="user.status != ''"
+                                type="button"
+                                (click)="infoHistoryStatusJs(i)"
+                                class="btn btn-info btn-sm"
+                            ><i class="material-icons">history</i></button>
+
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id='infoTable2' >
+        <div class="row justify-content-center">
+            <ngb-pagination
+                [collectionSize]="totalItems"
+                [(page)]="page"
+                [pageSize]="itemsPerPage"
+                [maxSize]="5"
+                [rotate]="true"
+                [boundaryLinks]="true"
+                (pageChange)="loadPage(page)"
+            ></ngb-pagination>
+        </div>
+    </div>
+    
+
+    
+    <div id='modal' style='border: 1px dotted;display: none;justify-content: center;align-items: center;height: 100%;background-color: #ffffff'>
+        <div class="modal-header">
+            <h1 class="modal-title">User's Information History Status</h1>
+            <button aria-label="Close" data-dismiss="modal" class="close" type="button" (click)="cancelModal()">
+                <img src='../../../content/images/close.png'>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div id='infoHistoryStatus'></div>
+            <br><br>
+            <button class="btn btn-default"   (click)="cancelModal()">Close Window</button>
+    </div>
+</div>
+
+
+
+
+</div>

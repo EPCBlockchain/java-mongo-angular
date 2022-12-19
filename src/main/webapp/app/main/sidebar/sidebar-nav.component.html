@@ -1,0 +1,66 @@
+<nav id="sidebar-wrapper" class="active">
+    <div id="control-wrapper">
+        <button class="sidebar-nav-toggler" (click)="toggle()"></button>
+    </div>
+    <ul id="sidebar-menu" (click)="toggle(true)">
+        <ng-template [ngIf]="visibleIf([UserRoles.ADMIN, UserRoles.OB_TEAM, UserRoles.ORG_ADMIN])">
+            <li [routerLink]="['/forms']">
+                <img class="sidebar-icon" src="../../../content/images/modify-tab.png" />
+                <span class="sidebar-title">Forms</span>
+            </li>
+            <li [routerLink]="['/forms/screening']">
+                <img class="sidebar-icon" src="../../../content/images/screening-form.png" />
+                <span class="sidebar-title">Screening Forms</span>
+            </li>
+        </ng-template>
+        <!-- ADMIN -->
+        <ng-template [ngIf]="visibleIf([UserRoles.ADMIN])">
+            <li [routerLink]="['/admin/orgs/list']">
+                <img class="sidebar-icon" src="../../../content/images/organizations.png" />
+                <span class="sidebar-title">Organizations</span>
+            </li>
+            <li [routerLink]="['/credentials/list']">
+                <img class="sidebar-icon" src="../../../content/images/access.png" />
+                <span class="sidebar-title">Credentials</span>
+            </li>
+            <li [routerLink]="['/admin/user-management']">
+                <img class="sidebar-icon" src="../../../content/images/team.png" />
+                <span class="sidebar-title">Users</span>
+            </li>
+            <ng-template [ngIf]="visibleIf([UserRoles.ADMIN])">
+                <li [routerLink]="['/admin/app-settings']">
+                    <img class="sidebar-icon" src="../../../content/images/config.svg" />
+                    <span class="sidebar-title">App Settings</span>
+                </li>
+            </ng-template>
+            <ng-template [ngIf]="visibleIf([UserRoles.ADMIN])">
+                <li [routerLink]="['/forms/dashboard']">
+                    <img class="sidebar-icon" src="../../../content/images/dashboard.png" />
+                    <span class="sidebar-title">Dashboard</span>
+                </li>
+            </ng-template>
+        </ng-template>
+        <!-- OBTEAM -->
+        <ng-template [ngIf]="visibleIf([UserRoles.ORG_ADMIN])">
+            <!-- <li [routerLink]="['/admin/orgs', organizationId]">
+                <img class="sidebar-icon" src="../../../content/images/organizations.png" />
+                <span class="sidebar-title">Organization Detail</span>
+            </li> -->
+            <li [routerLink]="['/admin/user-management']">
+                <img class="sidebar-icon" src="../../../content/images/team.png" />
+                <span class="sidebar-title">Users</span>
+            </li>
+        </ng-template>
+        <!-- USER -->
+        <ng-template [ngIf]="visibleIf([UserRoles.USER])">
+            <li [routerLink]="['/forms/pending-requests']">
+                <img class="sidebar-icon" src="../../../content/images/control-panel.png" />
+                <span class="sidebar-title">Pending Requests</span>
+            </li>
+            <li [routerLink]="['/forms/user-submissions']">
+                <img class="sidebar-icon" src="../../../content/images/agreement.png" />
+                <span class="sidebar-title">Submitted Forms</span>
+            </li>
+        </ng-template>
+    </ul>
+</nav>

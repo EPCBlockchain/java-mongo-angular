@@ -1,0 +1,8 @@
+export enum UserRoles {
+    NOTARY = 'ROLE_NOTARY',
+    USER = 'ROLE_USER',
+    OB_TEAM = 'ROLE_OBTEAM',
+    ADMIN = 'ROLE_ADMIN',
+    ORG_ADMIN = 'ROLE_ORGANIZATION_ADMIN',
+    ALL = 'ROLE_ALL'
+}

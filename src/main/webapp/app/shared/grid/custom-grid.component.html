@@ -1,0 +1,78 @@
+<jhi-filter-options (onFilter)="onFilterSubmissions($event)" [gridColumns]="columns"></jhi-filter-options>
+<table *ngIf='!isMobile' class="table table-striped tab table-hover">
+    <ng-template [ngIf]="columns">
+        <thead class="thead-light">
+            <tr>
+                <ng-template [ngIf]="selection">
+                    <th></th>
+                </ng-template>
+                <th *ngFor="let column of columns" >
+                    <span>{{ column.label }} &nbsp;&nbsp;
+                       <bi style="font-size:20px;" *ngFor="let b of column.icon" name="sort-up" [hidden]="!b.hide" (click)="b.action(column)"></bi>
+                    </span>
+                </th>
+            </tr>
+        </thead>
+    </ng-template>
+    <ng-template [ngIf]="rows.length > 0">
+        <tbody>
+            <tr *ngFor="let row of rows" [className]="addRowClass(row)">
+                <ng-template [ngIf]="selection">
+                    <td><input type="checkbox" (click)="select($event, row)"/></td>
+                </ng-template>
+                <td *ngFor="let column of columns" [width]="column.width" (click)="openRow(row)" [className]="addTDClass(column)">
+                    <ng-template [ngIf]="!column.buttons">
+                        <ng-template [ngIf]="column.imageSrc">
+                            <img [src]="row[column.imageSrc]" alt="" width="50px" height="50px">
+                        </ng-template>
+                        <ng-template [ngIf]="!column.imageSrc">
+                            {{ row[column.key] }}
+                        </ng-template>
+                    </ng-template>
+                    <ng-template [ngIf]="column.buttons">
+                        <button class="btn btn-sm btn-secondary pull-right" *ngFor="let button of column.buttons" (click)="button.action(row)">{{ button.label }}</button>
+                    </ng-template>
+                </td>
+            </tr>
+        </tbody>
+    </ng-template>
+    <ng-template [ngIf]="rows.length === 0">
+        <tbody>
+            <tr [className]="addRowClass(null)">
+                <ng-template [ngIf]="selection" >
+                    <td [colSpan]="columns.length + 1" class="text-center">No Records Found</td>
+                </ng-template>
+                <ng-template [ngIf]="!selection">
+                    <td [colSpan]="columns.length" class="text-center">No Records Found</td>
+                </ng-template>
+            </tr>
+        </tbody>
+    </ng-template>
+</table>
+
+<ng-template  [ngIf]='isMobile' >
+    <div *ngIf="rows.length > 0" class="list-holder">
+        <ul style="width:100%" class="dataList" *ngFor="let row of rows" (click)="openRow(row)">
+            <li *ngFor="let column of columns" >
+                <ng-template >
+                </ng-template>
+                <label *ngIf="column.buttons === undefined" style="margin-right:10px;font-weight:bold;">{{column.label}}:</label>
+                <label *ngIf="column.buttons === undefined"> {{ row[column.key] }}</label>
+                <div *ngIf="column.buttons">
+                    <br>
+                    <button class="btn btn-secondary"  style="margin-top:0;" *ngFor="let button of column.buttons" (click)="button.action(row)">{{ button.label }}</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div *ngIf="rows.length === 0">
+        <p >No Records Found!</p>
+    </div>
+</ng-template>
+
+
+<ng-template  [ngIf]="rows.length > 0">
+    <div class="row justify-content-center">
+        <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+    </div>
+</ng-template>

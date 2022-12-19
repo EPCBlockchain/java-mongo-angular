@@ -1,0 +1,20 @@
+<div class="clearfix" id="formio-component">   
+    <h1>Pending Forms List</h1>
+    <br>
+   <table class="table table-striped tab table-hover">
+      <thead class="thead-light">
+      <tr > 
+          <th width="20%"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+          <th width="20%"><span>Form</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+          <th width="20%"><span>Date Submitted</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+      </tr>
+      </thead>
+      <tbody *ngIf ="forms">
+          <tr *ngFor="let form of forms" (click)="openRow(form)">
+              <td>{{ form.id }}</td>
+              <td>{{ form.form }}</td>
+              <td>{{ form.created }}</td>
+          </tr>
+      </tbody>
+  </table>
+</div>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title >Form Request</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="shortcut icon" th:href="@{|${baseUrl}/favicon.ico|}" />
+    </head>
+    <body>
+        <p>
+            Please register your ProximaX KYC account at the following URL:
+        </p>
+        <p>
+            <a th:href="@{|${baseUrl}/#/forms/request/${orgId}/${formId}|}"
+               th:text="@{|${baseUrl}/#/forms/request/${orgId}/${formId}|}">Form Link</a>
+            
+        </p>
+        <p>
+            <span>Regards, </span>
+            <br/>
+            <em th:text="#{email.signature}">ProximaX KYC Team.</em>
+        </p>
+    </body>
+</html>

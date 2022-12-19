@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:text="#{email.activation.title}">BESC membership activation</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="shortcut icon" th:href="@{|${baseUrl}/favicon.ico|}" />
+    </head>
+    <body>
+        <div align="left">
+            <p th:text="@{|Dear ${user.login},|}"></p>
+            <p >
+                Your ProximaX application have been rejected, due to the following reason:
+            </p>
+            <p th:text="${remarks}"></p>
+            <p>
+                <span>Regards, </span>
+                <br/>
+                <em>ProximaX KYC Team.</em>
+            </p>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,150 @@
+# ===================================================================
+    # Spring Boot configuration for the "prod" profile.
+#
+# This configuration overrides the application.yml file.
+#
+# More information on profiles: https://www.jhipster.tech/profiles/
+# More information on configuration properties: https://www.jhipster.tech/common-application-properties/
+# ===================================================================
+
+# ===================================================================
+# Standard Spring Boot properties.
+# Full reference is available at:
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ===================================================================
+
+logging:
+    level:
+        ROOT: INFO
+        io.proximax.kyc: INFO
+        io.github.jhipster: INFO
+
+spring:
+    devtools:
+        restart:
+            enabled: false
+        livereload:
+            enabled: false
+    data:
+        mongodb:
+            uri: mongodb://localhost:27017
+            database: proximaxKYC
+#            username: root
+#            password: xrX5sJjd8J4u3oRwnDbN
+#            authentication-database: admin
+    mail:
+        host: smtp.zoho.com
+        port: 587
+        username: kyc.support@proximax.io   #Replace this field with your Zoho username.
+        password: m3qcD$8UBSC;6e}p          #Replace this field with your Zoho password.
+        protocol: smtp
+        tls: true
+        from: kyc.support@proximax.io
+        properties.mail.smtp:
+            auth: true
+            starttls.enable: true
+            ssl.trust: smtp.zoho.com
+    thymeleaf:
+        cache: true
+        prefix: file:./templates
+        template-resolver-order:
+
+# ===================================================================
+# To enable SSL, generate a certificate using:
+# keytool -genkey -alias proxikyc -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore keystore.p12 -validity 3650
+#
+# You can also use Let's Encrypt:
+# https://maximilian-boehm.com/hp2121/Create-a-Java-Keystore-JKS-from-Let-s-Encrypt-Certificates.htm
+#
+# Then, modify the server.ssl properties so your "server" configuration looks like:
+#
+# server:
+#    port: 443
+#    ssl:
+#        key-store: keystore.p12
+#        key-store-password: <your-password>
+#        key-store-type: PKCS12
+#        key-alias: proxikyc
+#        # The ciphers suite enforce the security by deactivating some old and deprecated SSL cipher, this list was tested against SSL Labs (https://www.ssllabs.com/ssltest/)
+#        ciphers: TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 ,TLS_DHE_RSA_WITH_AES_128_GCM_SHA256 ,TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 ,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_DHE_RSA_WITH_AES_128_CBC_SHA256,TLS_DHE_RSA_WITH_AES_128_CBC_SHA,TLS_DHE_RSA_WITH_AES_256_CBC_SHA256,TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_RSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_256_CBC_SHA256,TLS_RSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_256_CBC_SHA,TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA,TLS_RSA_WITH_CAMELLIA_256_CBC_SHA,TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA,TLS_RSA_WITH_CAMELLIA_128_CBC_SHA
+# ===================================================================
+server:
+    port: 9000
+    compression:
+        enabled: true
+        mime-types: text/html,text/xml,text/plain,text/css, application/javascript, application/json
+        min-response-size: 1024
+
+# ===================================================================
+# JHipster specific properties
+#
+# Full reference is available at: https://www.jhipster.tech/common-application-properties/
+# ===================================================================
+
+jhipster:
+    http:
+        version: V_1_1 # To use HTTP/2 you will need SSL support (see above the "server.ssl" configuration)
+        cache: # Used by the CachingHttpHeadersFilter
+            timeToLiveInDays: 1461
+    security:
+        authentication:
+            jwt:
+                secret: acbf28c426a32ca1d2424e87d160df7628d8263d
+                # Token is valid 24 hours
+                token-validity-in-seconds: 86400
+                token-validity-in-seconds-for-remember-me: 2592000
+    mail: # specific JHipster mail property, for standard properties see MailProperties
+        from: kyc.support@proximax.io
+        base-url: https://qa.kyc.proximax.io
+    metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
+        jmx:
+            enabled: true
+        logs: # Reports Dropwizard metrics in the logs
+            enabled: false
+            report-frequency: 60 # in seconds
+    logging:
+        logstash: # Forward logs to logstash over a socket, used by LoggingConfiguration
+            enabled: false
+            host: localhost
+            port: 5000
+            queue-size: 512
+
+# ===================================================================
+# Application specific properties
+# Add your own application properties here, see the ApplicationProperties class
+# to have type-safe configuration, like in the JHipsterProperties above
+#
+# More documentation is available at:
+# https://www.jhipster.tech/common-application-properties/
+# ===================================================================
+
+application:
+    ipfs:
+        host: /ip4/104.225.219.225/tcp/5001
+    jumio:
+        secret: Mzc2MjY0YWUtNmVmNi00ZWRmLWI4ZWQtYzQ3YjU3YjNlZjRiOjk1ZTIwYVBFZ056bUJieWxJNlpGcG04U0lDcHhONjJt
+        url: https://netverify.com/api/netverify/v2/fastfill
+    idm:
+        user: proximax
+        pass: dca91116b595d11144f5c9f2f58e113be283fe2f
+        host: https://staging.identitymind.com/im/account/consumer
+    thomson:
+        url: /v1/
+        host: rms-world-check-one-api-pilot.thomsonreuters.com
+        key: 6d10456b-5f1d-47d3-90f1-5b5f3d267f6e
+        secret: VpHcKfQI8sesvdUGK3un8nW31i7Tf9zKFpZcGirvO87CFi2Ipqxg7sFnFhxOhgjzISOFh+Hu8EQ+E6qZ3blH0g==
+        groups: https://rms-world-check-one-api-pilot.thomsonreuters.com/v1/groups
+        cases: https://rms-world-check-one-api-pilot.thomsonreuters.com/v1/cases
+        profiles: https://rms-world-check-one-api-pilot.thomsonreuters.com/v1/reference/profile/
+    shuftipro:
+        clientid: aaee0ce51abf0849e68b257ab97d83a36d9d082916b939cd1012f27d7f6bb873
+        secret: Q5Rtif09LBFHzI4jqh09Leo8fk06sHBi
+        url: https://shuftipro.com/api/
+    mailgun:
+        username: postmaster@sandbox1972138841e64191a9027e8b5b92e44a.mailgun.org
+        messageurl: https://api:d9139b610a40341a394713f0e491e45d-de7062c6-995d9de5@api.mailgun.net/v3/sandbox9f91bc1ecf4044a6bc991859ae90779b.mailgun.org/messages
+        password: 13e2b03ef030037c13927280427fe011-de7062c6-a9932520
+        apikey: 566cea153b7c15d68f9286beedc730c5-6140bac2-3ea5b900
+    migration:
+        enabled: true
+#        enabled: false

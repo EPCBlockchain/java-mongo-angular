@@ -1,0 +1,84 @@
+$mobile:479px;
+$mtablet:767px;
+$ltablet:1024px;
+$desktop:1920px;
+@media screen and (max-height: $mobile){
+    div#login-form {
+        height:100%;
+        flex-wrap: nowrap;
+        overflow-y: scroll;
+        padding-top:10px;
+        padding-bottom:100px;
+        #title {
+            margin-bottom: 10px;
+        }
+    }
+}
+    div#login-form {
+    width: 100%;
+    #title {
+        color: white;
+        text-align: center;
+        font-size: 1em;
+        margin-top:20px;
+        margin-bottom: 50px;
+    }
+
+    .btn-signin{
+        background-color: #0991bb;
+        border: 2px solid #0991bb;
+    }
+
+    .form-group {
+        min-height: initial;
+    }
+
+    #forgot-password-link {
+        text-align: center;
+        display: block;
+        margin-top: 15px;
+        font-size: 0.8em;
+        color: #48d5da;
+
+        &:hover {
+            color: #93e1e4;
+        }
+
+        margin-bottom: 15px;
+    }
+
+    #registration-wrapper {
+        position: absolute;
+        bottom: 0;
+        background: #055972;
+        width: 100%;
+        left: 0;
+        height: 30px;
+        text-align: center;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+
+        a {
+            position: relative;
+            color: white;
+            font-family: lato;
+            background: #0991bb;
+            padding: 7px 30px;
+            top: -12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            text-decoration: none;
+
+            &:hover {
+                background-color: #49b0cf;
+            }
+        }
+    }
+
+    #registration-success {
+        text-align: center;
+        display: block;
+        color: #20b5ac;
+        font-weight: 700;
+    }
+}

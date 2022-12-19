@@ -1,0 +1,31 @@
+#sidebar-wrapper[_ngcontent-c3]{
+    box-shadow: rgba(0, 0, 0, 0.2) 7px 1px 8px 0px, rgba(0, 0, 0, 0.19) 9px 1px 20px 0px;
+    background-image: url(sidebar_background_image.png);
+    background-size: cover;
+}
+
+#master-header[_ngcontent-c4] nav[_ngcontent-c4], #master-header[_ngcontent-c4] nav[_ngcontent-c4] .header-dark[_ngcontent-c4]{
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 8px 0px, rgba(0, 0, 0, 0.19) 9px 1px 20px 0px;
+    background: rgb(53, 166, 89) !important;
+}
+
+.card{
+    border-radius: 2px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px 0px, rgba(0, 0, 0, 0.19) 0px 6px 20px 0px;
+    background-color: #fff;
+    margin-bottom: 30px;
+}
+
+#kyc-footer[_ngcontent-c5]{
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 8px 0px, rgba(0, 0, 0, 0.19) 9px 1px 20px 0px;
+    background: rgb(53, 166, 89) !important;
+}
+
+#content-page[_ngcontent-c2]{
+    background-image: url(Background_image.jpg);
+    background-size: cover;
+}
+
+#sidebar-wrapper[_ngcontent-c3] #control-wrapper[_ngcontent-c3] button.sidebar-nav-toggler[_ngcontent-c3]:hover{
+    background-color: transparent !important;
+}

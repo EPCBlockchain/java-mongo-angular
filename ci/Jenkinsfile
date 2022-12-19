@@ -1,0 +1,87 @@
+pipeline {
+  agent {
+    node {
+      label 'kyc-build-node'
+    }
+  }
+  
+  options {
+    timestamps()
+  }
+
+  environment {
+    DOCKER_REGISTRY = "249767383774.dkr.ecr.ap-southeast-1.amazonaws.com"
+    CREDENTIAL_ID = "ecr:ap-southeast-1:jenkins-ecr"
+    IMAGE = "proximax-kyc"
+  }
+
+  stages {
+    stage ('Build') {
+        steps {
+            echo 'Building proximax-kyc inside a docker'
+            script {
+                withDockerContainer(image: 'openjdk:8-alpine', args: '-u root:root'){
+                  sh """
+                    apk add --no-cache yarn nodejs
+                    ash ./mvnw clean install
+                    ash ./mvnw clean package -Pprod
+                  """
+                }
+            }
+        }
+		}
+
+    stage('Build and Publish Release Image'){
+      when {
+        tag "release-*"
+      }
+      steps {
+        echo 'Build and Publish Image'
+        script {
+          def newImage = docker.build("${IMAGE}")
+          docker.withRegistry("https://${DOCKER_REGISTRY}", "${CREDENTIAL_ID}"){
+            newImage.push("${env.GIT_BRANCH}") // if a tag commit, then env.GIT_BRANCH returns the tag name instead of a branch
+          }
+        }
+      }
+      post {
+        success {
+          slackSend channel: '#devops',
+            color: 'good',
+            message: "Branch *${env.GIT_BRANCH}* build of *${currentBuild.fullDisplayName}* completed successfully :100:\nPushed Docker image ${DOCKER_REGISTRY}/${IMAGE}:${env.GIT_BRANCH}"
+        }
+      }
+    }
+
+    stage('Build and Publish Development Image'){
+      when {
+        branch "development"
+      }
+      steps {
+        echo 'Build and Publish Image'
+        script {
+          def newImage = docker.build("${IMAGE}")
+          docker.withRegistry("https://${DOCKER_REGISTRY}", "${CREDENTIAL_ID}"){
+            newImage.push("development-jenkins-build-${env.BUILD_NUMBER}") // push using Jenkins build number
+            newImage.push("development") //update Docker Image master
+          }
+        }
+      }
+      post {
+        success {
+          slackSend channel: '#devops',
+            color: 'good',
+            message: "Branch *${env.GIT_BRANCH}* build of *${currentBuild.fullDisplayName}* completed successfully :100:\nPushed Docker image ${DOCKER_REGISTRY}/${IMAGE}:${env.GIT_BRANCH}"
+        }
+      }
+    }
+  }
+
+  post {
+    failure {
+      slackSend channel: '#devops',
+        color: 'bad',
+        message: "Branch *${env.GIT_BRANCH}* of *${currentBuild.fullDisplayName}* FAILED :scream:"
+    }
+  }
+}
