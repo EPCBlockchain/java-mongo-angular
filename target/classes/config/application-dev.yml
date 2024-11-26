@@ -157,12 +157,7 @@ application:
         clientid: aaee0ce51abf0849e68b257ab97d83a36d9d082916b939cd1012f27d7f6bb873
         secret: Q5Rtif09LBFHzI4jqh09Leo8fk06sHBi
         url: https://shuftipro.com/api/
-    mailgun:
-        username: postmaster@mail.besc.online
-        messageurl: https://api:603ee5b6f0068f2dbf2c04332086c722-2b778fc3-2ca80006@api.mailgun.net/v3/mail.besc.online/messages
-        password: d40fd693f688eb6824ad270aea7d7b2e-2b778fc3-e10ed8e2
-        apikey: 603ee5b6f0068f2dbf2c04332086c722-2b778fc3-2ca80006
-        enabled: false
+
     migration:
         #enabled: true
         enabled: true
